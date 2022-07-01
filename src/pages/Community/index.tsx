@@ -1,3 +1,3 @@
 export const Community = () => {
-  return <div>Community</div>
+  return <div />
 }
