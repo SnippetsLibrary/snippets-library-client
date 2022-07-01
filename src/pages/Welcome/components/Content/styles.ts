@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Content = styled(motion.div)`
-  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   max-width: 1440px;
   height: min-content;
@@ -15,8 +18,6 @@ export const Content = styled(motion.div)`
 `
 
 export const ContentText = styled.div`
-  overflow: visible;
-
   width: 660px;
   height: auto;
 
@@ -32,6 +33,8 @@ export const TryForFreeLink = styled(Link)`
   gap: 12px;
   align-items: center;
   justify-content: center;
+
+  margin-bottom: 64px;
 
   color: ${({ theme }) => theme.colors.contentNavLink};
   text-decoration: none;

@@ -1,8 +1,26 @@
 import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
+import { motion } from 'framer-motion'
 
 import * as S from './styles'
 
 import { ROUTES } from 'src/utils/constants/routes'
+
+const thumbnailVariants = {
+  initial: { scale: 0.9, opacity: 0 },
+  enter: { scale: 1, opacity: 1 },
+  exit: {
+    scale: 0.5,
+    opacity: 0,
+  },
+}
+
+const frameVariants = {
+  hover: { scale: 0.99 },
+}
+
+const imageVariants = {
+  hover: { scale: 0.99 },
+}
 
 export const Content = () => {
   return (
@@ -20,6 +38,15 @@ export const Content = () => {
         <S.Text>Try for free</S.Text>
         <KeyboardArrowRightIcon sx={{ width: '4.6rem', height: '4.6rem' }} />
       </S.TryForFreeLink>
+      <motion.div style={{ cursor: 'pointer' }} variants={thumbnailVariants}>
+        <motion.div whileHover='hover' variants={frameVariants}>
+          <motion.img
+            src={`https://static1.squarespace.com/static/5b475b2c50a54f54f9b4e1dc/t/5b5a3938562fa764113169a6/1532639559620/DSCF3338.jpg?format=1500w`}
+            alt='Test Photo'
+            variants={imageVariants}
+          />
+        </motion.div>
+      </motion.div>
     </S.Content>
   )
 }
