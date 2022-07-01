@@ -40,7 +40,7 @@ export const BoxItems = () => {
             >
               <S.LibraryTitleBox type={item.type === E_BoxItemsTypes.odd}>
                 <S.LibraryTitle>
-                  {item.title}{' '}
+                  {item.title}
                   <S.LibraryLabel type={item.type === E_BoxItemsTypes.odd}>
                     {item.label}
                   </S.LibraryLabel>
