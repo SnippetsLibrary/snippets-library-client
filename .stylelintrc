@@ -36,6 +36,9 @@
     "color-function-notation": null,
     "hue-degree-notation": null,
     "no-empty-source": null,
-    "length-zero-no-unit": null
+    "length-zero-no-unit": null,
+    "selector-class-pattern": null,
+    "alpha-value-notation": null,
+    "property-no-vendor-prefix": null
   }
 }

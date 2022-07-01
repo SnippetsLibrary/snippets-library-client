@@ -38,15 +38,15 @@ export const Content = () => {
         <S.Text>Try for free</S.Text>
         <KeyboardArrowRightIcon sx={{ width: '4.6rem', height: '4.6rem' }} />
       </S.TryForFreeLink>
-      <motion.div style={{ cursor: 'pointer' }} variants={thumbnailVariants}>
+      <S.ContentImages variants={thumbnailVariants}>
         <motion.div whileHover='hover' variants={frameVariants}>
           <motion.img
-            src={`https://static1.squarespace.com/static/5b475b2c50a54f54f9b4e1dc/t/5b5a3938562fa764113169a6/1532639559620/DSCF3338.jpg?format=1500w`}
+            src={`https://static1.squarespace.com/static/5b475b2c50a54f54f9b4e1dc/t/5b5a3938562fa764113169a6/1532639559620/DSCF3338.jpg?format=960w`}
             alt='Test Photo'
             variants={imageVariants}
           />
         </motion.div>
-      </motion.div>
+      </S.ContentImages>
     </S.Content>
   )
 }

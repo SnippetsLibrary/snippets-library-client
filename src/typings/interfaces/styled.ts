@@ -1,12 +1,22 @@
 export interface I_Theme {
   colors: {
-    headerNavigation: string
-    headerNavigationWelcome: string
-    headerNavigationWelcomeTryIt: string
-    headerNavLink: string
-    headerNavLinkActive: string
-    headerBackground: string
-    headerBackgroundTransparent: string
-    contentNavLink: string
+    header: {
+      navigation: string
+      navigationWelcome: string
+      navigationWelcomeTryIt: string
+      navLink: string
+      navLinkActive: string
+      background: string
+      backgroundTransparent: string
+    }
+    welcome: {
+      navLink: string
+    }
+    library: {
+      background: string
+      mainTitle: string
+      mainTitleHover: string
+      mainTextColor: string
+    }
   }
 }

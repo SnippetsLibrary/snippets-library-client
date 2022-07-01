@@ -17,9 +17,9 @@ export const Header = styled.header`
   max-height: 80px;
   padding: 0 24px;
 
-  color: ${({ theme }) => theme.colors.headerNavigationWelcome};
+  color: ${({ theme }) => theme.colors.header.navigationWelcome};
 
-  background: ${({ theme }) => theme.colors.headerBackgroundTransparent};
+  background: ${({ theme }) => theme.colors.header.backgroundTransparent};
 `
 
 export const Box = styled(motion.div)`
@@ -31,9 +31,9 @@ export const Box = styled(motion.div)`
 `
 
 export const MainNavLink = styled(Link)`
-  font-size: 24px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.colors.headerNavigationWelcome};
+  font-size: 20px;
+  font-weight: 700;
+  color: ${({ theme }) => theme.colors.header.navigationWelcome};
   text-decoration: none;
 `
 
@@ -41,7 +41,7 @@ export const TryItLink = styled(Link)`
   padding: 9px 16px;
 
   font-size: 18px;
-  color: ${({ theme }) => theme.colors.headerNavigationWelcomeTryIt};
+  color: ${({ theme }) => theme.colors.header.navigationWelcomeTryIt};
   text-decoration: none;
 
   background-color: #08f;
@@ -54,7 +54,7 @@ export const TryItLink = styled(Link)`
 export const NavLink = styled(Link)`
   font-size: 16px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.headerNavigationWelcome};
+  color: ${({ theme }) => theme.colors.header.navigationWelcome};
   text-decoration: none;
 
   transition: all 0.3s ease;

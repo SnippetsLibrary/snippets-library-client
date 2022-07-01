@@ -1,3 +1,4 @@
+import { Divider } from '@mui/material'
 import { ReactNode } from 'react'
 
 import { Header } from './components/Header'
@@ -11,7 +12,8 @@ export const MainLayout = ({ children }: MainLayoutProps) => {
   return (
     <S.MainLayout>
       <Header />
-      {children}
+      <Divider />
+      <S.Inner>{children}</S.Inner>
     </S.MainLayout>
   )
 }

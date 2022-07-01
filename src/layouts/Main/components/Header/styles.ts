@@ -12,22 +12,22 @@ export const Header = styled.header`
   max-height: 80px;
   padding: 0 24px;
 
-  color: ${({ theme }) => theme.colors.headerNavigation};
+  color: ${({ theme }) => theme.colors.header.navigation};
 
-  background: ${({ theme }) => theme.colors.headerBackground};
+  background: ${({ theme }) => theme.colors.header.background};
 `
 
 export const MainNavLink = styled(Link)`
   font-size: 18px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.headerNavigation};
+  color: ${({ theme }) => theme.colors.header.navigation};
   text-decoration: none;
 `
 
 export const NavLink = styled(Link)`
   font-size: 16px;
   font-weight: 500;
-  color: ${({ theme }) => theme.colors.headerNavLink};
+  color: ${({ theme }) => theme.colors.header.navLink};
   text-decoration: none;
 
   transition: all 0.3s ease;
@@ -45,6 +45,6 @@ interface ListItemProps {
 export const ListItem = styled.li<ListItemProps>`
   a {
     color: ${({ theme, location }) =>
-      location ? theme.colors.headerNavLinkActive : theme.colors.headerNavLink};
+      location ? theme.colors.header.navLinkActive : theme.colors.header.navLink};
   }
 `

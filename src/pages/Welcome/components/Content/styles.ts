@@ -36,7 +36,7 @@ export const TryForFreeLink = styled(Link)`
 
   margin-bottom: 64px;
 
-  color: ${({ theme }) => theme.colors.contentNavLink};
+  color: ${({ theme }) => theme.colors.welcome.navLink};
   text-decoration: none;
 
   transition: all 0.3s ease;
@@ -44,4 +44,8 @@ export const TryForFreeLink = styled(Link)`
   &:hover {
     gap: 32px;
   }
+`
+
+export const ContentImages = styled(motion.div)`
+  cursor: pointer;
 `
