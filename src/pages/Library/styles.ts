@@ -19,7 +19,7 @@ export const LibrarySecondInner = styled.div`
   background-color: ${({ theme }) => theme.colors.library.backgroundSecondary};
 `
 
-export const LibraryMainBox = styled.div`
+export const LibraryMainBox = styled(motion.div)`
   display: flex;
   flex-direction: column;
   gap: 18px;

@@ -4,9 +4,20 @@ import * as S from './styles'
 
 import { ROUTES } from 'src/utils/constants/routes'
 
-const boxAnimation = {
+const firstBoxAnimation = {
   hidden: {
-    x: -100,
+    x: -50,
+    opacity: 0,
+  },
+  visible: {
+    x: 0,
+    opacity: 1,
+  },
+}
+
+const secondBoxAnimation = {
+  hidden: {
+    x: 50,
     opacity: 0,
   },
   visible: {
@@ -19,25 +30,18 @@ export const Library = () => {
   return (
     <S.Library>
       <S.LibraryInner>
-        <S.LibraryMainBox>
-          <S.LibraryTitleBox
-            initial={{ opacity: 0 }}
-            style={{ y: 32 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
+        <S.LibraryMainBox
+          initial='hidden'
+          whileInView='visible'
+          viewport={{ amount: 0.2 }}
+          variants={firstBoxAnimation}
+        >
+          <S.LibraryTitleBox>
             <S.LibraryTitle>
               Snippets <S.LibraryLabel>Library</S.LibraryLabel>
             </S.LibraryTitle>
           </S.LibraryTitleBox>
-          <S.LibraryDescriptionBox
-            initial={{ opacity: 0 }}
-            style={{ x: 32 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
+          <S.LibraryDescriptionBox>
             <S.LibraryDescription>
               Here will be some description of this project, just let him wait a bit. Extend your
               prototypes with code using Code Snippets.
@@ -53,20 +57,14 @@ export const Library = () => {
           initial='hidden'
           whileInView='visible'
           viewport={{ amount: 0.2 }}
-          variants={boxAnimation}
+          variants={secondBoxAnimation}
         >
           <S.LibrarySecondTitleBox>
             <S.LibrarySecondTitle>
               Create. <S.LibrarySecondLabel>Explore.</S.LibrarySecondLabel> Use.
             </S.LibrarySecondTitle>
           </S.LibrarySecondTitleBox>
-          <S.LibraryDescriptionBox
-            initial={{ opacity: 0 }}
-            style={{ x: 32 }}
-            animate={{ x: 0, opacity: 1 }}
-            exit={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-          >
+          <S.LibraryDescriptionBox>
             <S.LibraryDescription>
               Explore the latest features. See why Snippets Library is the best snippet service.
             </S.LibraryDescription>
