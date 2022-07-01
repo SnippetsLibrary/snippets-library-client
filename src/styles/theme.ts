@@ -16,7 +16,9 @@ export const theme: I_Theme = {
     },
     library: {
       background: 'hsl(0, 0%, 10%)',
+      backgroundSecondary: '#111',
       mainTitle: 'linear-gradient(145deg, #15b, #e234)',
+      mainTitleSecond: '#9C1BFF',
       mainTitleHover: '#00A3FF',
       mainTextColor: 'hsl(0, 0%, 100%)',
     },

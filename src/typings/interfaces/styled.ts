@@ -14,7 +14,9 @@ export interface I_Theme {
     }
     library: {
       background: string
+      backgroundSecondary: string
       mainTitle: string
+      mainTitleSecond: string
       mainTitleHover: string
       mainTextColor: string
     }
