@@ -1,10 +1,13 @@
-import { Content } from 'src/components/Content'
+import { Routing } from './routing'
+import * as S from './styles/app'
+import { GlobalStyles } from './styles/global'
 
 function App() {
   return (
-    <div className='App'>
-      <Content />
-    </div>
+    <S.App>
+      <Routing />
+      <GlobalStyles />
+    </S.App>
   )
 }
 

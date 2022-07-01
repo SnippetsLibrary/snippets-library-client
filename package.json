@@ -11,8 +11,15 @@
     "lint:sc": "stylelint src/"
   },
   "dependencies": {
+    "@emotion/react": "^11.9.3",
+    "@emotion/styled": "^11.9.3",
+    "@mui/icons-material": "^5.8.4",
+    "@types/styled-components": "^5.1.25",
+    "framer-motion": "^6.3.16",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
+    "react-router-dom": "^6.3.0",
+    "styled-components": "^5.3.5",
     "vite-tsconfig-paths": "^3.5.0"
   },
   "devDependencies": {

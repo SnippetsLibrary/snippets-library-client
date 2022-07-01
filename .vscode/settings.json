@@ -1,0 +1,12 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "stylelint.useLocal": true,
+  "stylelint.autoFixOnSave": true,
+  "cSpell.language": "en,ru",
+  "cSpell.words": ["antd", "esbuild", "Josefin", "reduxjs", "stylelint", "Walsheim"],
+  "vsicons.associations.folders": [
+    { "icon": "redux", "extensions": ["store"] },
+    { "icon": "route", "extensions": ["routing"] }
+  ]
+}
