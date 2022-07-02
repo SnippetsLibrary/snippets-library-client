@@ -1,12 +1,21 @@
+import { useForm } from 'react-hook-form'
+
 import * as S from './styles'
 
 import * as A from 'src/styles/auth'
 import { ROUTES } from 'src/utils/constants/routes'
 
+type FormData = {
+  login: string
+  password: string
+}
+
 export const SignIn = () => {
-  const handleSubmit = (event: any) => {
-    event.preventDefault()
-  }
+  const {
+    register,
+    formState: { errors },
+    handleSubmit,
+  } = useForm<FormData>()
 
   return (
     <S.SignIn>
@@ -24,9 +33,15 @@ export const SignIn = () => {
           autoComplete='off'
           autoCorrect='off'
           spellCheck='false'
+          {...register('login', { required: true })}
         />
-        <A.Input type='password' placeholder='Password' autoComplete='new-password' />
-        <A.Button onClick={handleSubmit} type='submit'>
+        <A.Input
+          type='password'
+          placeholder='Password'
+          autoComplete='off'
+          {...register('password', { required: true, minLength: 6 })}
+        />
+        <A.Button type='submit' onClick={handleSubmit((data) => console.log(data))}>
           Sign In
         </A.Button>
       </A.Form>
