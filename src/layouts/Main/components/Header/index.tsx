@@ -8,25 +8,21 @@ import * as S from './styles'
 
 import { ROUTES } from 'src/utils/constants/routes'
 
-const visible = {
-  hidden: {
-    y: 12,
-    opacity: 0,
-  },
-  visible: {
+const variants = {
+  open: {
     y: 0,
     opacity: 1,
+    transition: {
+      y: { stiffness: 1000, velocity: -100 },
+    },
   },
-}
-
-const hidden = {
-  hidden: {
+  closed: {
     y: -6,
     opacity: 0,
-  },
-  visible: {
-    y: -6,
-    opacity: 0,
+    display: 'none',
+    transition: {
+      y: { stiffness: 1000 },
+    },
   },
 }
 
@@ -35,11 +31,11 @@ export const Header = () => {
 
   const location = useLocation()
 
-  const handleMore = () => {
+  const handleMenuToggle = () => {
     setMenu((prev) => !prev)
   }
 
-  const handleMoreClose = () => {
+  const handleMenuClose = () => {
     setMenu(false)
   }
 
@@ -58,16 +54,11 @@ export const Header = () => {
         </S.UnorderedList>
       </S.HeaderInner>
       <S.HeaderMore>
-        {menu && <S.PopoverOverlay onClick={handleMoreClose} />}
-        <S.More onClick={handleMore}>
+        {menu && <S.PopoverOverlay onClick={handleMenuClose} />}
+        <S.More onClick={handleMenuToggle}>
           {menu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         </S.More>
-        <S.Popover
-          initial='hidden'
-          whileInView='visible'
-          viewport={{ amount: 0.2 }}
-          variants={menu ? visible : hidden}
-        >
+        <S.Popover animate={menu ? variants.open : variants.closed} variants={variants}>
           {menuLinks.map((link, index) => {
             return (
               <S.MoreNavLink key={index} to={link.leadsTo}>

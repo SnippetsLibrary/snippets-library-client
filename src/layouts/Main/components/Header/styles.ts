@@ -91,6 +91,7 @@ export const More = styled.button`
     background-color: ${({ theme }) => theme.colors.header.backgroundTransparent};
   }
 `
+
 export const PopoverOverlay = styled.div`
   position: fixed;
   z-index: 99;
