@@ -8,6 +8,7 @@ export interface I_Theme {
       navLinkActive: string
       background: string
       backgroundTransparent: string
+      backgroundHover: string
     }
     welcome: {
       navLink: string

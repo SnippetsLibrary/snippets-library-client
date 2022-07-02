@@ -10,6 +10,7 @@ export const theme: I_Theme = {
       navLinkActive: 'hsl(0, 0%, 100%)',
       background: 'hsl(0, 0%, 10%)',
       backgroundTransparent: 'transparent',
+      backgroundHover: '#313131',
     },
     welcome: {
       navLink: 'rgba(0, 136, 255, 1)',

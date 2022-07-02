@@ -1,10 +1,10 @@
-import { Content } from './components/Content'
+import { FirstItem } from './components/FirstItem'
 import * as S from './styles'
 
 export const Welcome = () => {
   return (
     <S.Welcome>
-      <Content />
+      <FirstItem />
     </S.Welcome>
   )
 }

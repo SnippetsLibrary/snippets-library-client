@@ -22,7 +22,7 @@ const imageVariants = {
   hover: { scale: 0.99 },
 }
 
-export const Content = () => {
+export const FirstItem = () => {
   return (
     <S.Content
       initial={{ opacity: 0 }}
