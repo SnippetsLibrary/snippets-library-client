@@ -36,12 +36,12 @@ export const BoxItems = () => {
               whileInView='visible'
               viewport={{ amount: 0.2, once: true }}
               variants={item.type === E_BoxItemsTypes.odd ? animation : reversedAnimation}
-              type={item.type === E_BoxItemsTypes.odd}
+              $type={item.type === E_BoxItemsTypes.odd}
             >
-              <S.LibraryTitleBox type={item.type === E_BoxItemsTypes.odd}>
+              <S.LibraryTitleBox $type={item.type === E_BoxItemsTypes.odd}>
                 <S.LibraryTitle>
                   {item.title}
-                  <S.LibraryLabel type={item.type === E_BoxItemsTypes.odd}>
+                  <S.LibraryLabel $type={item.type === E_BoxItemsTypes.odd}>
                     {item.label}
                   </S.LibraryLabel>
                   {item.lastTitle}

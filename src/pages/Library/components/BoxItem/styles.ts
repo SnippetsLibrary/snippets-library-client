@@ -18,14 +18,14 @@ export const LibraryInner = styled.div`
 `
 
 interface LibraryMainBoxProps {
-  type: boolean
+  $type: boolean
 }
 
 export const LibraryMainBox = styled(motion.div)<LibraryMainBoxProps>`
   display: flex;
   flex-direction: column;
   gap: 18px;
-  align-items: ${({ type }) => (type ? 'flex-start' : 'flex-end')};
+  align-items: ${({ $type }) => ($type ? 'flex-start' : 'flex-end')};
 
   max-width: 1366px;
   margin: 0 auto;
@@ -33,12 +33,12 @@ export const LibraryMainBox = styled(motion.div)<LibraryMainBoxProps>`
 `
 
 interface LibraryTitleBoxProps {
-  type: boolean
+  $type: boolean
 }
 
 export const LibraryTitleBox = styled(motion.div)<LibraryTitleBoxProps>`
   width: 100%;
-  max-width: ${({ type }) => (type ? 'auto' : '525px')};
+  max-width: ${({ $type }) => ($type ? 'auto' : '525px')};
 `
 
 export const LibraryTitle = styled.h1`
@@ -49,12 +49,12 @@ export const LibraryTitle = styled.h1`
 `
 
 interface LibraryLabelProps {
-  type: boolean
+  $type: boolean
 }
 
 export const LibraryLabel = styled.div<LibraryLabelProps>`
-  background: ${({ theme, type }) =>
-    type ? theme.colors.library.mainTitle : theme.colors.library.mainTitleSecond};
+  background: ${({ theme, $type }) =>
+    $type ? theme.colors.library.mainTitle : theme.colors.library.mainTitleSecond};
   -webkit-background-clip: text;
   background-clip: text;
 

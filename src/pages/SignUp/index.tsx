@@ -13,6 +13,7 @@ export const SignUp = () => {
           <A.RedirectLink to={ROUTES.signIn}>Sign in</A.RedirectLink>
         </A.Redirect>
       </A.UpperLabelBox>
+      <A.Form></A.Form>
     </S.SignUp>
   )
 }

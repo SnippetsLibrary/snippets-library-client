@@ -41,6 +41,6 @@ export const GoBack = styled.button`
 `
 
 export const FormBox = styled.div`
-  min-width: 330px;
-  max-width: 400px;
+  min-width: 260px;
+  max-width: 300px;
 `
