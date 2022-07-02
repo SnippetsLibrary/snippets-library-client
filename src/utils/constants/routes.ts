@@ -1,14 +1,17 @@
 export enum ROUTES {
-  // Welcome Page
+  // Welcome
   welcome = '/',
   learn = '/learn',
   updates = '/updates',
 
-  // Snippets
-  snippets = '/snippets',
-  auth = '/auth',
+  // Main
   library = '/library',
   docs = '/docs',
   community = '/community',
   error = '/*',
+
+  // Auth
+  auth = '/auth',
+  signIn = '/auth/sign-in',
+  signUp = '/auth/sign-up',
 }

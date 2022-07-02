@@ -5,13 +5,21 @@ import { Fonts } from './fonts'
 export const GlobalStyles = createGlobalStyle`
   ${Fonts}
 
+  #root {
+    width: 100%;
+    height: 100%;
+  }
+
   html,
   body {
-      margin: 0;
-      padding: 0;
-      
-      font-family: GTWalsheimPro, sans-serif;
-      font-size: 16px;
+    height: 100%;
+    min-height: 100vh;
+    margin: 0;
+    padding: 0;
+    
+
+    font-family: GTWalsheimPro, sans-serif;
+    font-size: 16px;
   }
 
   * {

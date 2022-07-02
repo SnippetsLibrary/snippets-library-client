@@ -1,12 +1,13 @@
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { MainLayout, WelcomeLayout } from 'src/layouts'
-import { Community, Docs, Error, Library, Welcome } from 'src/pages'
+import { AuthLayout, MainLayout, WelcomeLayout } from 'src/layouts'
+import { Community, Docs, Error, Library, SignIn, SignUp, Welcome } from 'src/pages'
 import { ROUTES } from 'src/utils/constants/routes'
 
 export const Routing = () => {
   return (
     <Routes>
+      {/* Welcome Layout */}
       <Route
         path={ROUTES.welcome}
         element={
@@ -15,6 +16,15 @@ export const Routing = () => {
           </WelcomeLayout>
         }
       />
+      <Route
+        path={ROUTES.error}
+        element={
+          <WelcomeLayout>
+            <Error />
+          </WelcomeLayout>
+        }
+      />
+      {/* Main Layout */}
       <Route
         path={ROUTES.library}
         element={
@@ -39,12 +49,30 @@ export const Routing = () => {
           </MainLayout>
         }
       />
+      {/* Auth Layout */}
+
       <Route
-        path={ROUTES.error}
+        path={ROUTES.auth}
         element={
-          <WelcomeLayout>
-            <Error />
-          </WelcomeLayout>
+          <AuthLayout>
+            <Navigate to={ROUTES.signIn} />
+          </AuthLayout>
+        }
+      />
+      <Route
+        path={ROUTES.signIn}
+        element={
+          <AuthLayout>
+            <SignIn />
+          </AuthLayout>
+        }
+      />
+      <Route
+        path={ROUTES.signUp}
+        element={
+          <AuthLayout>
+            <SignUp />
+          </AuthLayout>
         }
       />
     </Routes>

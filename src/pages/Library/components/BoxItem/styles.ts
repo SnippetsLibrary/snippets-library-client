@@ -27,8 +27,9 @@ export const LibraryMainBox = styled(motion.div)<LibraryMainBoxProps>`
   gap: 18px;
   align-items: ${({ type }) => (type ? 'flex-start' : 'flex-end')};
 
-  max-width: 1000px;
+  max-width: 1366px;
   margin: 0 auto;
+  padding: 48px;
 `
 
 interface LibraryTitleBoxProps {

@@ -61,7 +61,7 @@ export const Header = () => {
         <S.Popover animate={menu ? variants.open : variants.closed} variants={variants}>
           {menuLinks.map((link, index) => {
             return (
-              <S.MoreNavLink key={index} to={link.leadsTo}>
+              <S.MoreNavLink onClick={handleMenuClose} key={index} to={link.leadsTo}>
                 {link.label}
               </S.MoreNavLink>
             )

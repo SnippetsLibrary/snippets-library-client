@@ -18,8 +18,8 @@ export const headerLinks: I_HeaderLink[] = [
 ]
 
 enum E_MenuLinks {
+  more = 'More',
   signIn = 'Sign In',
-  signUp = 'Sign Up',
 }
 
 interface I_MenuLink {
@@ -28,6 +28,6 @@ interface I_MenuLink {
 }
 
 export const menuLinks: I_MenuLink[] = [
+  { label: E_MenuLinks.more, leadsTo: ROUTES.docs },
   { label: E_MenuLinks.signIn, leadsTo: ROUTES.auth },
-  { label: E_MenuLinks.signUp, leadsTo: ROUTES.auth },
 ]

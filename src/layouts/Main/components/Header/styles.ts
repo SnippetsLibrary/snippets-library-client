@@ -119,7 +119,7 @@ export const Popover = styled(motion.div)`
 
   background-color: ${({ theme }) => theme.colors.header.navigation};
   border-radius: 12px;
-  box-shadow: 6px 1px 15px 0 rgb(0 0 0 / 4%);
+  box-shadow: 0px 0px 15px 0 rgb(0 0 0 / 12%);
 `
 
 export const MoreNavLink = styled(Link)`

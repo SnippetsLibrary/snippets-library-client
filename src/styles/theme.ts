@@ -23,5 +23,9 @@ export const theme: I_Theme = {
       mainTitleHover: '#00A3FF',
       mainTextColor: 'hsl(0, 0%, 100%)',
     },
+    auth: {
+      navLink: 'rgba(0, 136, 255, 1)',
+      backgroundTransparent: 'transparent',
+    },
   },
 }

@@ -21,5 +21,9 @@ export interface I_Theme {
       mainTitleHover: string
       mainTextColor: string
     }
+    auth: {
+      navLink: string
+      backgroundTransparent: string
+    }
   }
 }
