@@ -2,25 +2,9 @@ import KeyboardArrowRightIcon from '@mui/icons-material/KeyboardArrowRight'
 import { motion } from 'framer-motion'
 
 import * as S from './styles'
+import { frameVariants, imageVariants, thumbnailVariants } from './variants'
 
 import { ROUTES } from 'src/utils/constants/routes'
-
-const thumbnailVariants = {
-  initial: { scale: 0.9, opacity: 0 },
-  enter: { scale: 1, opacity: 1 },
-  exit: {
-    scale: 0.5,
-    opacity: 0,
-  },
-}
-
-const frameVariants = {
-  hover: { scale: 0.99 },
-}
-
-const imageVariants = {
-  hover: { scale: 0.99 },
-}
 
 export const FirstItem = () => {
   return (
