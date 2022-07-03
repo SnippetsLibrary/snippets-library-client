@@ -5,26 +5,9 @@ import { useLocation } from 'react-router-dom'
 
 import { headerLinks, menuLinks } from './data'
 import * as S from './styles'
+import { animation } from './variants'
 
 import { ROUTES } from 'src/utils/constants/routes'
-
-const variants = {
-  open: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      y: { stiffness: 1000, velocity: -100 },
-    },
-  },
-  closed: {
-    y: -6,
-    opacity: 0,
-    display: 'none',
-    transition: {
-      y: { stiffness: 1000 },
-    },
-  },
-}
 
 export const Header = () => {
   const [menu, setMenu] = useState<boolean>(false)
@@ -58,7 +41,7 @@ export const Header = () => {
         <S.More onClick={handleMenuToggle}>
           {menu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         </S.More>
-        <S.Popover animate={menu ? variants.open : variants.closed} variants={variants}>
+        <S.Popover animate={menu ? animation.open : animation.closed} variants={animation}>
           {menuLinks.map((link, index) => {
             return (
               <S.MoreNavLink onClick={handleMenuClose} key={index} to={link.leadsTo}>

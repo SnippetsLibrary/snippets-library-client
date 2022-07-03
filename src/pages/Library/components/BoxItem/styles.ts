@@ -7,14 +7,16 @@ export const Library = styled.div`
 
   color: ${({ theme }) => theme.colors.library.mainTextColor};
 `
+interface LibraryInnerProps {
+  $type: boolean
+}
 
-export const LibraryInner = styled.div`
+export const LibraryInner = styled.div<LibraryInnerProps>`
   padding-top: 8rem;
   padding-bottom: 4rem;
 
-  &:nth-of-type(even) {
-    background-color: ${({ theme }) => theme.colors.library.backgroundSecondary};
-  }
+  background-color: ${({ theme, $type }) =>
+    $type ? theme.colors.library.background : theme.colors.library.backgroundSecondary};
 `
 
 interface LibraryMainBoxProps {

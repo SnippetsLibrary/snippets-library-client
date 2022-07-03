@@ -26,6 +26,7 @@ export const theme: I_Theme = {
     auth: {
       navLink: 'rgba(0, 136, 255, 1)',
       backgroundTransparent: 'transparent',
+      inputErrorText: '#f36',
     },
   },
 }

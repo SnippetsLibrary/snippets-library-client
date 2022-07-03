@@ -24,6 +24,7 @@ export interface I_Theme {
     auth: {
       navLink: string
       backgroundTransparent: string
+      inputErrorText: string
     }
   }
 }

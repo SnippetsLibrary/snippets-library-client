@@ -2,35 +2,14 @@ import ArrowForwardIcon from '@mui/icons-material/ArrowForward'
 
 import { boxItems, E_BoxItemsTypes } from './data'
 import * as S from './styles'
-
-const animation = {
-  hidden: {
-    x: -100,
-    opacity: 0,
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-  },
-}
-
-const reversedAnimation = {
-  hidden: {
-    x: 100,
-    opacity: 0,
-  },
-  visible: {
-    x: 0,
-    opacity: 1,
-  },
-}
+import { animation, reversedAnimation } from './variants'
 
 export const BoxItems = () => {
   return (
     <>
       {boxItems.map((item, index) => {
         return (
-          <S.LibraryInner key={index}>
+          <S.LibraryInner key={index} $type={item.type === E_BoxItemsTypes.odd}>
             <S.LibraryMainBox
               initial='hidden'
               whileInView='visible'
