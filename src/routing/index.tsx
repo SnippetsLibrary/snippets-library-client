@@ -5,7 +5,7 @@ import { RouteWrapper } from './RouteWrapper'
 
 import { useStoreSelector } from 'src/hooks/useStoreSelector'
 import { AuthLayout, IntroduceLayout, MainLayout, WelcomeLayout } from 'src/layouts'
-import { Community, Docs, Error, Library, SignIn, SignUp, Welcome } from 'src/pages'
+import { Community, Docs, Error, Home, Library, Search, SignIn, SignUp, Welcome } from 'src/pages'
 import { ROUTES } from 'src/utils/constants/routes'
 import { LocalStorage } from 'src/utils/helpers/localStorage'
 
@@ -22,7 +22,9 @@ export const Routing = () => {
           path={ROUTES.home}
           element={
             authorized ? (
-              <MainLayout>test</MainLayout>
+              <MainLayout>
+                <Home />
+              </MainLayout>
             ) : (
               <WelcomeLayout>
                 <Welcome />
@@ -44,29 +46,60 @@ export const Routing = () => {
             )
           }
         />
-
         <Route
           path={ROUTES.library}
           element={
-            <IntroduceLayout>
-              <Library />
-            </IntroduceLayout>
+            authorized ? (
+              <MainLayout>
+                <Error />
+              </MainLayout>
+            ) : (
+              <IntroduceLayout>
+                <Library />
+              </IntroduceLayout>
+            )
           }
         />
         <Route
           path={ROUTES.docs}
           element={
-            <IntroduceLayout>
-              <Docs />
-            </IntroduceLayout>
+            authorized ? (
+              <MainLayout>
+                <Error />
+              </MainLayout>
+            ) : (
+              <IntroduceLayout>
+                <Docs />
+              </IntroduceLayout>
+            )
+          }
+        />
+        <Route
+          path={ROUTES.search}
+          element={
+            authorized ? (
+              <MainLayout>
+                <Search />
+              </MainLayout>
+            ) : (
+              <WelcomeLayout>
+                <Error />
+              </WelcomeLayout>
+            )
           }
         />
         <Route
           path={ROUTES.community}
           element={
-            <IntroduceLayout>
-              <Community />
-            </IntroduceLayout>
+            authorized ? (
+              <MainLayout>
+                <Community />
+              </MainLayout>
+            ) : (
+              <WelcomeLayout>
+                <Error />
+              </WelcomeLayout>
+            )
           }
         />
       </Route>

@@ -1,5 +1,6 @@
 import { ReactNode } from 'react'
 
+import { MainHeader } from './components/Header'
 import * as S from './styles'
 
 interface I_Authorized {
@@ -7,5 +8,10 @@ interface I_Authorized {
 }
 
 export const MainLayout = ({ children }: I_Authorized) => {
-  return <S.AuthorizedLayout>{children}</S.AuthorizedLayout>
+  return (
+    <S.AuthorizedLayout>
+      <MainHeader />
+      {children}
+    </S.AuthorizedLayout>
+  )
 }

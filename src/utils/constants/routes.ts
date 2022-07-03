@@ -1,14 +1,12 @@
 export enum ROUTES {
-  // Welcome
   home = '/',
+  error = '/*',
   learn = '/learn',
   updates = '/updates',
-  error = '/*',
-
-  // Introduce
   library = '/library',
   docs = '/docs',
   community = '/community',
+  search = '/search',
 
   // Auth
   auth = '/auth',

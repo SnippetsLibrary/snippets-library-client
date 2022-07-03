@@ -1,3 +1,5 @@
+import * as S from './styles'
+
 export const Community = () => {
-  return <div />
+  return <S.Community />
 }

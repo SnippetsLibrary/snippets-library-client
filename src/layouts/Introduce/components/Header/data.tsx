@@ -3,7 +3,6 @@ import { ROUTES } from 'src/utils/constants/routes'
 enum E_HeaderLinks {
   library = 'Library',
   docs = 'Docs',
-  community = 'Community',
 }
 
 interface I_HeaderLink {
@@ -14,7 +13,6 @@ interface I_HeaderLink {
 export const headerLinks: I_HeaderLink[] = [
   { label: E_HeaderLinks.library, leadsTo: ROUTES.library },
   { label: E_HeaderLinks.docs, leadsTo: ROUTES.docs },
-  { label: E_HeaderLinks.community, leadsTo: ROUTES.community },
 ]
 
 enum E_MenuLinks {
