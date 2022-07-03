@@ -11,6 +11,6 @@ interface I_HeaderWelcomeLinks {
 }
 
 export const headerWelcomeLinks: I_HeaderWelcomeLinks[] = [
-  { label: E_HeaderWelcomeLinks.learn, leadsTo: ROUTES.learn },
+  { label: E_HeaderWelcomeLinks.learn, leadsTo: ROUTES.library },
   { label: E_HeaderWelcomeLinks.updates, leadsTo: ROUTES.updates },
 ]

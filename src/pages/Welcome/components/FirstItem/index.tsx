@@ -34,7 +34,7 @@ export const FirstItem = () => {
       <S.ContentText>
         <S.Text>Create or find Snippet what you want...</S.Text>
       </S.ContentText>
-      <S.TryForFreeLink to={ROUTES.library}>
+      <S.TryForFreeLink to={ROUTES.auth}>
         <S.Text>Try for free</S.Text>
         <KeyboardArrowRightIcon sx={{ width: '4.6rem', height: '4.6rem' }} />
       </S.TryForFreeLink>

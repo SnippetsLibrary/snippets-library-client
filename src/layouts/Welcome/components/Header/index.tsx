@@ -35,7 +35,7 @@ export const WelcomeHeader = () => {
             )
           })}
         </S.UnorderedList>
-        <S.TryItLink to={ROUTES.library}>Try for free</S.TryItLink>
+        <S.TryItLink to={ROUTES.auth}>Try for free</S.TryItLink>
       </S.Box>
     </S.Header>
   )
