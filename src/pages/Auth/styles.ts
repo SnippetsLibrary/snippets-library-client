@@ -54,11 +54,11 @@ export const InputBox = styled.div`
   width: 100%;
 `
 
-interface UserInputProps {
+interface I_UserInputProps {
   loginError: boolean
 }
 
-export const UserInput = styled.input<UserInputProps>`
+export const UserInput = styled.input<I_UserInputProps>`
   width: 100%;
   padding: 9px 16px;
 
@@ -84,11 +84,11 @@ export const UserInput = styled.input<UserInputProps>`
   }
 `
 
-interface NameInputProps {
+interface I_NameInputProps {
   nameError: boolean
 }
 
-export const NameInput = styled.input<NameInputProps>`
+export const NameInput = styled.input<I_NameInputProps>`
   width: 100%;
   padding: 9px 16px;
 
@@ -114,11 +114,11 @@ export const NameInput = styled.input<NameInputProps>`
   }
 `
 
-interface EmailInputProps {
+interface I_EmailInputProps {
   emailError: boolean
 }
 
-export const EmailInput = styled.input<EmailInputProps>`
+export const EmailInput = styled.input<I_EmailInputProps>`
   width: 100%;
   padding: 9px 16px;
 
@@ -144,11 +144,11 @@ export const EmailInput = styled.input<EmailInputProps>`
   }
 `
 
-interface PassInputProps {
+interface I_PassInputProps {
   passError: boolean
 }
 
-export const PassInput = styled.input<PassInputProps>`
+export const PassInput = styled.input<I_PassInputProps>`
   width: 100%;
   padding: 9px 16px;
 

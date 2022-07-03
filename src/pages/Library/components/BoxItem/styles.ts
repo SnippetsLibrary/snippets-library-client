@@ -7,11 +7,11 @@ export const Library = styled.div`
 
   color: ${({ theme }) => theme.colors.library.mainTextColor};
 `
-interface LibraryInnerProps {
+interface I_LibraryInnerProps {
   $type: boolean
 }
 
-export const LibraryInner = styled.div<LibraryInnerProps>`
+export const LibraryInner = styled.div<I_LibraryInnerProps>`
   padding-top: 8rem;
   padding-bottom: 4rem;
 
@@ -19,11 +19,11 @@ export const LibraryInner = styled.div<LibraryInnerProps>`
     $type ? theme.colors.library.background : theme.colors.library.backgroundSecondary};
 `
 
-interface LibraryMainBoxProps {
+interface I_LibraryMainBoxProps {
   $type: boolean
 }
 
-export const LibraryMainBox = styled(motion.div)<LibraryMainBoxProps>`
+export const LibraryMainBox = styled(motion.div)<I_LibraryMainBoxProps>`
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -34,11 +34,11 @@ export const LibraryMainBox = styled(motion.div)<LibraryMainBoxProps>`
   padding: 48px;
 `
 
-interface LibraryTitleBoxProps {
+interface I_LibraryTitleBoxProps {
   $type: boolean
 }
 
-export const LibraryTitleBox = styled(motion.div)<LibraryTitleBoxProps>`
+export const LibraryTitleBox = styled(motion.div)<I_LibraryTitleBoxProps>`
   width: 100%;
   max-width: ${({ $type }) => ($type ? 'auto' : '525px')};
 `
@@ -50,11 +50,11 @@ export const LibraryTitle = styled.h1`
   font-size: 96px;
 `
 
-interface LibraryLabelProps {
+interface I_LibraryLabelProps {
   $type: boolean
 }
 
-export const LibraryLabel = styled.div<LibraryLabelProps>`
+export const LibraryLabel = styled.div<I_LibraryLabelProps>`
   background: ${({ theme, $type }) =>
     $type ? theme.colors.library.mainTitle : theme.colors.library.mainTitleSecond};
   -webkit-background-clip: text;

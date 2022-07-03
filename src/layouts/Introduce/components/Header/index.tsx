@@ -9,7 +9,7 @@ import { animation } from './variants'
 
 import { ROUTES } from 'src/utils/constants/routes'
 
-export const Header = () => {
+export const IntroduceHeader = () => {
   const [menu, setMenu] = useState<boolean>(false)
 
   const location = useLocation()
@@ -25,7 +25,7 @@ export const Header = () => {
   return (
     <S.Header>
       <S.HeaderInner>
-        <S.MainNavLink to={ROUTES.welcome}>Snippets</S.MainNavLink>
+        <S.MainNavLink to={ROUTES.home}>Snippets</S.MainNavLink>
         <S.UnorderedList>
           {headerLinks.map((link, index) => {
             return (

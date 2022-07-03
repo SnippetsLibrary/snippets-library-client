@@ -1,80 +1,110 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { AuthLayout, MainLayout, WelcomeLayout } from 'src/layouts'
+import { RouteAuth } from './RouteAuth'
+import { RouteWrapper } from './RouteWrapper'
+
+import { useStoreSelector } from 'src/hooks/useStoreSelector'
+import { AuthLayout, IntroduceLayout, MainLayout, WelcomeLayout } from 'src/layouts'
 import { Community, Docs, Error, Library, SignIn, SignUp, Welcome } from 'src/pages'
 import { ROUTES } from 'src/utils/constants/routes'
+import { LocalStorage } from 'src/utils/helpers/localStorage'
 
 export const Routing = () => {
+  const token = LocalStorage.getAuthToken()
+  const isAuth = useStoreSelector((state) => state.user.isAuth)
+
+  const authorized = token && isAuth
+
   return (
     <Routes>
-      {/* Welcome Layout */}
-      <Route
-        path={ROUTES.welcome}
-        element={
-          <WelcomeLayout>
-            <Welcome />
-          </WelcomeLayout>
-        }
-      />
-      <Route
-        path={ROUTES.error}
-        element={
-          <WelcomeLayout>
-            <Error />
-          </WelcomeLayout>
-        }
-      />
-      {/* Main Layout */}
-      <Route
-        path={ROUTES.library}
-        element={
-          <MainLayout>
-            <Library />
-          </MainLayout>
-        }
-      />
-      <Route
-        path={ROUTES.docs}
-        element={
-          <MainLayout>
-            <Docs />
-          </MainLayout>
-        }
-      />
-      <Route
-        path={ROUTES.community}
-        element={
-          <MainLayout>
-            <Community />
-          </MainLayout>
-        }
-      />
-      {/* Auth Layout */}
+      <Route element={<RouteWrapper />}>
+        <Route
+          path={ROUTES.home}
+          element={
+            authorized ? (
+              <MainLayout>test</MainLayout>
+            ) : (
+              <WelcomeLayout>
+                <Welcome />
+              </WelcomeLayout>
+            )
+          }
+        />
+        <Route
+          path={ROUTES.error}
+          element={
+            authorized ? (
+              <MainLayout>
+                <Error />
+              </MainLayout>
+            ) : (
+              <WelcomeLayout>
+                <Error />
+              </WelcomeLayout>
+            )
+          }
+        />
 
-      <Route
-        path={ROUTES.auth}
-        element={
-          <AuthLayout>
-            <Navigate to={ROUTES.signIn} />
-          </AuthLayout>
-        }
-      />
-      <Route
-        path={ROUTES.signIn}
-        element={
-          <AuthLayout>
-            <SignIn />
-          </AuthLayout>
-        }
-      />
-      <Route
-        path={ROUTES.signUp}
-        element={
-          <AuthLayout>
-            <SignUp />
-          </AuthLayout>
-        }
-      />
+        <Route
+          path={ROUTES.library}
+          element={
+            <IntroduceLayout>
+              <Library />
+            </IntroduceLayout>
+          }
+        />
+        <Route
+          path={ROUTES.docs}
+          element={
+            <IntroduceLayout>
+              <Docs />
+            </IntroduceLayout>
+          }
+        />
+        <Route
+          path={ROUTES.community}
+          element={
+            <IntroduceLayout>
+              <Community />
+            </IntroduceLayout>
+          }
+        />
+      </Route>
+
+      <Route element={<RouteAuth />}>
+        <Route
+          path={ROUTES.auth}
+          element={
+            <AuthLayout>
+              <Navigate to={ROUTES.signIn} />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path={ROUTES.authError}
+          element={
+            <AuthLayout>
+              <Navigate to={ROUTES.signIn} />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path={ROUTES.signIn}
+          element={
+            <AuthLayout>
+              <SignIn />
+            </AuthLayout>
+          }
+        />
+        <Route
+          path={ROUTES.signUp}
+          element={
+            <AuthLayout>
+              <SignUp />
+            </AuthLayout>
+          }
+        />
+      </Route>
     </Routes>
   )
 }

@@ -1,10 +1,14 @@
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import * as S from './styles'
 
 import * as A from '../styles'
 
+import { authAPI } from 'src/services/auth'
 import { ROUTES } from 'src/utils/constants/routes'
+import { LocalStorage } from 'src/utils/helpers/localStorage'
 
 type FormData = {
   login: string
@@ -12,11 +16,28 @@ type FormData = {
 }
 
 export const SignIn = () => {
+  const navigate = useNavigate()
+
+  const [userLogin, { data: userLoginData, isSuccess: userLoginSuccess }] =
+    authAPI.useUserLoginMutation()
+
   const {
     register,
     formState: { errors },
+    getValues,
     handleSubmit,
   } = useForm<FormData>()
+
+  const handleLogin = () => {
+    userLogin({ login: getValues('login'), password: getValues('password') })
+  }
+
+  useEffect(() => {
+    if (userLoginData && userLoginData.payload && userLoginSuccess) {
+      LocalStorage.setAuthToken(userLoginData.payload.token)
+      navigate('/', { replace: true })
+    }
+  }, [userLoginData, userLoginSuccess])
 
   return (
     <S.SignIn>
@@ -27,7 +48,7 @@ export const SignIn = () => {
           <A.RedirectLink to={ROUTES.signUp}>Sign up for free</A.RedirectLink>
         </A.Redirect>
       </A.UpperLabelBox>
-      <A.Form autoComplete='off' onSubmit={handleSubmit((data) => console.log(data))}>
+      <A.Form autoComplete='off' onSubmit={handleSubmit(handleLogin)}>
         <A.InputBox>
           <A.UserInput
             type='text'
@@ -46,7 +67,7 @@ export const SignIn = () => {
             placeholder='Password'
             autoComplete='off'
             passError={Boolean(errors.password)}
-            {...register('password', { required: true, minLength: 6 })}
+            {...register('password', { required: true, minLength: 3 })}
           />
           {errors.password && <A.InputErrorText>Please enter a valid password</A.InputErrorText>}
         </A.InputBox>

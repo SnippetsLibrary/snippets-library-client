@@ -17,7 +17,7 @@ export const WelcomeHeader = () => {
         exit={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
       >
-        <S.MainNavLink to={ROUTES.welcome}>Snippets Library</S.MainNavLink>
+        <S.MainNavLink to={ROUTES.home}>Snippets Library</S.MainNavLink>
       </S.Box>
       <S.Box
         initial={{ opacity: 0 }}

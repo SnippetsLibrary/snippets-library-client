@@ -1,3 +1,4 @@
 export { WelcomeLayout } from './Welcome'
-export { AuthLayout } from './Auth'
+export { IntroduceLayout } from './Introduce'
 export { MainLayout } from './Main'
+export { AuthLayout } from './Auth'

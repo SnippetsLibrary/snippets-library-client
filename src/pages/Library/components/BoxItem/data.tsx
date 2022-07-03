@@ -5,7 +5,7 @@ export enum E_BoxItemsTypes {
   even = 'Even',
 }
 
-interface BoxItems {
+interface I_BoxItems {
   type: E_BoxItemsTypes
   title: string
   label: string
@@ -15,7 +15,7 @@ interface BoxItems {
   leadsTo: ROUTES
 }
 
-export const boxItems: BoxItems[] = [
+export const boxItems: I_BoxItems[] = [
   {
     type: E_BoxItemsTypes.odd,
     title: 'Snippets',

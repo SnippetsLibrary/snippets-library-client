@@ -11,17 +11,21 @@ import {
 } from 'redux-persist'
 import storage from 'redux-persist/lib/storage'
 
-import { userAPI } from 'src/services'
+import userSlice from './user'
+
 import { authAPI } from 'src/services/auth'
+import { userAPI } from 'src/services/user'
 
 const persistConfig = {
   key: 'snippets',
   storage,
+  whitelist: [],
 }
 
 const rootReducer = combineReducers({
   [userAPI.reducerPath]: userAPI.reducer,
   [authAPI.reducerPath]: authAPI.reducer,
+  [userSlice.name]: userSlice.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)

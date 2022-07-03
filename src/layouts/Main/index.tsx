@@ -1,20 +1,11 @@
 import { ReactNode } from 'react'
 
-import { Header } from './components/Header'
 import * as S from './styles'
 
-import * as C from 'src/styles/components'
-
-interface MainLayoutProps {
+interface I_Authorized {
   children: ReactNode
 }
 
-export const MainLayout = ({ children }: MainLayoutProps) => {
-  return (
-    <S.MainLayout>
-      <Header />
-      <C.Divider />
-      <S.Inner>{children}</S.Inner>
-    </S.MainLayout>
-  )
+export const MainLayout = ({ children }: I_Authorized) => {
+  return <S.AuthorizedLayout>{children}</S.AuthorizedLayout>
 }
