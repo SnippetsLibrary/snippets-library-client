@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 import * as S from './styles'
 
@@ -8,6 +9,7 @@ import * as A from '../styles'
 import { authAPI } from 'src/services/auth'
 import { ROUTES } from 'src/utils/constants/routes'
 import { regExp } from 'src/utils/helpers/regExp'
+import { toasts } from 'src/utils/helpers/toasts'
 
 type FormData = {
   name: string
@@ -16,6 +18,8 @@ type FormData = {
 }
 
 export const SignUp = () => {
+  const navigate = useNavigate()
+
   const [userRegister, { data: userRegisterData, isSuccess: userRegisterSuccess }] =
     authAPI.useUserRegisterMutation()
 
@@ -35,7 +39,10 @@ export const SignUp = () => {
   }
 
   useEffect(() => {
-    if (userRegisterSuccess && userRegisterData) return console.log(userRegisterData.message)
+    if (userRegisterSuccess && userRegisterData) {
+      navigate('/')
+      toasts.userRegisterSuccess()
+    }
   }, [userRegisterSuccess, userRegisterData])
 
   return (

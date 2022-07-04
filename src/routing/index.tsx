@@ -5,7 +5,18 @@ import { ProtectedRoute } from './ProtectedRoute'
 import { UnprotectedRoute } from './UnprotectedRoute'
 
 import { AuthLayout, IntroduceLayout, MainLayout, WelcomeLayout } from 'src/layouts'
-import { Community, Docs, Error, Home, Library, Search, SignIn, SignUp, Welcome } from 'src/pages'
+import {
+  Community,
+  Confirm,
+  Docs,
+  Error,
+  Home,
+  Library,
+  Search,
+  SignIn,
+  SignUp,
+  Welcome,
+} from 'src/pages'
 import { ROUTES } from 'src/utils/constants/routes'
 
 export const Routing = () => {
@@ -53,6 +64,7 @@ export const Routing = () => {
 
       <Route element={<ProtectedRoute />}>
         {/* MainLayout */}
+
         <Route
           path={ROUTES.userHome}
           element={
@@ -88,6 +100,8 @@ export const Routing = () => {
       </Route>
 
       <Route element={<AuthRoute />}>
+        {/* AuthLayout  */}
+
         <Route
           path={ROUTES.auth}
           element={
@@ -120,6 +134,7 @@ export const Routing = () => {
             </AuthLayout>
           }
         />
+        <Route path={ROUTES.authConfirm} element={<Confirm />} />
       </Route>
     </Routes>
   )

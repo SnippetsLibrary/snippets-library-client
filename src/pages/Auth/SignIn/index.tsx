@@ -9,6 +9,7 @@ import * as A from '../styles'
 import { authAPI } from 'src/services/auth'
 import { ROUTES } from 'src/utils/constants/routes'
 import { LocalStorage } from 'src/utils/helpers/localStorage'
+import { toasts } from 'src/utils/helpers/toasts'
 
 type FormData = {
   login: string
@@ -38,6 +39,7 @@ export const SignIn = () => {
     if (userLoginData && userLoginData.payload && userLoginSuccess) {
       LocalStorage.setAuthToken(userLoginData.payload.token)
       navigate('/user', { replace: true })
+      toasts.userLoginSuccess()
     }
   }, [userLoginData, userLoginSuccess])
 
