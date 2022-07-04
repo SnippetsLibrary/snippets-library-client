@@ -19,7 +19,7 @@ export const MainHeader = () => {
   return (
     <S.Header>
       <S.HeaderInner>
-        <S.MainNavLink to={ROUTES.home}>Snippets</S.MainNavLink>
+        <S.MainNavLink to={ROUTES.userHome}>Snippets</S.MainNavLink>
         <S.UnorderedList>
           {headerLinks.map((link, index) => {
             return (

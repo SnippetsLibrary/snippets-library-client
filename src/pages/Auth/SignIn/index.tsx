@@ -37,7 +37,7 @@ export const SignIn = () => {
   useEffect(() => {
     if (userLoginData && userLoginData.payload && userLoginSuccess) {
       LocalStorage.setAuthToken(userLoginData.payload.token)
-      navigate('/', { replace: true })
+      navigate('/user', { replace: true })
     }
   }, [userLoginData, userLoginSuccess])
 

@@ -1,9 +1,11 @@
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 
 import * as S from './styles'
 
 import * as A from '../styles'
 
+import { authAPI } from 'src/services/auth'
 import { ROUTES } from 'src/utils/constants/routes'
 import { regExp } from 'src/utils/helpers/regExp'
 
@@ -14,11 +16,27 @@ type FormData = {
 }
 
 export const SignUp = () => {
+  const [userRegister, { data: userRegisterData, isSuccess: userRegisterSuccess }] =
+    authAPI.useUserRegisterMutation()
+
   const {
     register,
     formState: { errors },
+    getValues,
     handleSubmit,
   } = useForm<FormData>()
+
+  const handleRegister = () => {
+    userRegister({
+      name: getValues('name'),
+      email: getValues('email'),
+      password: getValues('password'),
+    })
+  }
+
+  useEffect(() => {
+    if (userRegisterSuccess && userRegisterData) return console.log(userRegisterData.message)
+  }, [userRegisterSuccess, userRegisterData])
 
   return (
     <S.SignUp>
@@ -29,7 +47,7 @@ export const SignUp = () => {
           <A.RedirectLink to={ROUTES.signIn}>Sign in</A.RedirectLink>
         </A.Redirect>
       </A.UpperLabelBox>
-      <A.Form autoComplete='off' onSubmit={handleSubmit((data) => console.log(data))}>
+      <A.Form autoComplete='off' onSubmit={handleSubmit(handleRegister)}>
         <A.InputBox>
           <A.NameInput
             type='text'

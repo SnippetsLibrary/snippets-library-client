@@ -1,110 +1,93 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
 
-import { RouteAuth } from './RouteAuth'
-import { RouteWrapper } from './RouteWrapper'
+import { AuthRoute } from './AuthRoute'
+import { ProtectedRoute } from './ProtectedRoute'
+import { UnprotectedRoute } from './UnprotectedRoute'
 
-import { useStoreSelector } from 'src/hooks/useStoreSelector'
 import { AuthLayout, IntroduceLayout, MainLayout, WelcomeLayout } from 'src/layouts'
 import { Community, Docs, Error, Home, Library, Search, SignIn, SignUp, Welcome } from 'src/pages'
 import { ROUTES } from 'src/utils/constants/routes'
-import { LocalStorage } from 'src/utils/helpers/localStorage'
 
 export const Routing = () => {
-  const token = LocalStorage.getAuthToken()
-  const isAuth = useStoreSelector((state) => state.user.isAuth)
-
-  const authorized = token && isAuth
-
   return (
     <Routes>
-      <Route element={<RouteWrapper />}>
+      <Route element={<UnprotectedRoute />}>
+        {/* WelcomeLayout */}
+
         <Route
           path={ROUTES.home}
           element={
-            authorized ? (
-              <MainLayout>
-                <Home />
-              </MainLayout>
-            ) : (
-              <WelcomeLayout>
-                <Welcome />
-              </WelcomeLayout>
-            )
+            <WelcomeLayout>
+              <Welcome />
+            </WelcomeLayout>
           }
         />
         <Route
           path={ROUTES.error}
           element={
-            authorized ? (
-              <MainLayout>
-                <Error />
-              </MainLayout>
-            ) : (
-              <WelcomeLayout>
-                <Error />
-              </WelcomeLayout>
-            )
+            <WelcomeLayout>
+              <Error />
+            </WelcomeLayout>
           }
         />
+
+        {/* IntroduceLayout */}
+
         <Route
           path={ROUTES.library}
           element={
-            authorized ? (
-              <MainLayout>
-                <Error />
-              </MainLayout>
-            ) : (
-              <IntroduceLayout>
-                <Library />
-              </IntroduceLayout>
-            )
+            <IntroduceLayout>
+              <Library />
+            </IntroduceLayout>
           }
         />
         <Route
           path={ROUTES.docs}
           element={
-            authorized ? (
-              <MainLayout>
-                <Error />
-              </MainLayout>
-            ) : (
-              <IntroduceLayout>
-                <Docs />
-              </IntroduceLayout>
-            )
+            <IntroduceLayout>
+              <Docs />
+            </IntroduceLayout>
+          }
+        />
+      </Route>
+
+      <Route element={<ProtectedRoute />}>
+        {/* MainLayout */}
+        <Route
+          path={ROUTES.userHome}
+          element={
+            <MainLayout>
+              <Home />
+            </MainLayout>
           }
         />
         <Route
           path={ROUTES.search}
           element={
-            authorized ? (
-              <MainLayout>
-                <Search />
-              </MainLayout>
-            ) : (
-              <WelcomeLayout>
-                <Error />
-              </WelcomeLayout>
-            )
+            <MainLayout>
+              <Search />
+            </MainLayout>
           }
         />
         <Route
           path={ROUTES.community}
           element={
-            authorized ? (
-              <MainLayout>
-                <Community />
-              </MainLayout>
-            ) : (
-              <WelcomeLayout>
-                <Error />
-              </WelcomeLayout>
-            )
+            <MainLayout>
+              <Community />
+            </MainLayout>
+          }
+        />
+        <Route
+          path={ROUTES.error}
+          element={
+            <MainLayout>
+              <Error />
+            </MainLayout>
           }
         />
       </Route>
 
-      <Route element={<RouteAuth />}>
+      <Route element={<AuthRoute />}>
         <Route
           path={ROUTES.auth}
           element={

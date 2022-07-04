@@ -7,7 +7,7 @@ import { signIn } from 'src/store/user'
 import { ROUTES } from 'src/utils/constants/routes'
 import { LocalStorage } from 'src/utils/helpers/localStorage'
 
-export const RouteAuth = () => {
+export const AuthRoute = () => {
   const token = LocalStorage.getAuthToken()
   const isAuth = useStoreSelector((state) => state.user.isAuth)
   const dispatch = useStoreDispatch()
