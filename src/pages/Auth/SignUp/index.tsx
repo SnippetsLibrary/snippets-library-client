@@ -68,7 +68,7 @@ export const SignUp = () => {
           />
           {errors.password && <A.InputErrorText>Please enter a valid password</A.InputErrorText>}
         </A.InputBox>
-        <A.Button type='submit'>Sign In</A.Button>
+        <S.RegisterButton type='submit'>Sign In</S.RegisterButton>
       </A.Form>
     </S.SignUp>
   )

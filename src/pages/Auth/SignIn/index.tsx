@@ -18,8 +18,10 @@ type FormData = {
 export const SignIn = () => {
   const navigate = useNavigate()
 
-  const [userLogin, { data: userLoginData, isSuccess: userLoginSuccess }] =
-    authAPI.useUserLoginMutation()
+  const [
+    userLogin,
+    { data: userLoginData, isSuccess: userLoginSuccess, isLoading: userLoginLoading },
+  ] = authAPI.useUserLoginMutation()
 
   const {
     register,
@@ -71,7 +73,13 @@ export const SignIn = () => {
           />
           {errors.password && <A.InputErrorText>Please enter a valid password</A.InputErrorText>}
         </A.InputBox>
-        <A.Button type='submit'>Sign In</A.Button>
+        <S.LoginButton
+          disabled={userLoginLoading}
+          userLoginLoading={userLoginLoading}
+          type='submit'
+        >
+          Sign In
+        </S.LoginButton>
       </A.Form>
     </S.SignIn>
   )
