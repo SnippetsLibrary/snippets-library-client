@@ -73,6 +73,15 @@ export const Routing = () => {
             </MainLayout>
           }
         />
+
+        <Route
+          path={ROUTES.error}
+          element={
+            <MainLayout>
+              <Error />
+            </MainLayout>
+          }
+        />
         <Route
           path={ROUTES.search}
           element={
@@ -86,14 +95,6 @@ export const Routing = () => {
           element={
             <MainLayout>
               <Community />
-            </MainLayout>
-          }
-        />
-        <Route
-          path={ROUTES.error}
-          element={
-            <MainLayout>
-              <Error />
             </MainLayout>
           }
         />
