@@ -1,5 +1,5 @@
 export const LocalStorage = {
-  setAuthToken: (token: string) => localStorage.setItem('token', token),
-  getAuthToken: () => localStorage.getItem('token') as string,
-  deleteAuthToken: () => localStorage.removeItem('token'),
+  setAuthToken: (token: string) => localStorage.setItem('snippetsAuthToken', token),
+  getAuthToken: () => localStorage.getItem('snippetsAuthToken') as string,
+  deleteAuthToken: () => localStorage.removeItem('snippetsAuthToken'),
 }

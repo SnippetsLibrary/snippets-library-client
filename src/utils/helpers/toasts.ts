@@ -3,6 +3,5 @@ import 'react-toastify/dist/ReactToastify.css'
 
 export const toasts = {
   userConfirmSuccess: () => toast('User successfully activated!'),
-  userRegisterSuccess: () => toast('We sent activation link on your email!'),
-  userLoginSuccess: () => toast('User successfully signed in!'),
+  userRegisterSuccess: () => toast('We sent an activation link to your email!'),
 }

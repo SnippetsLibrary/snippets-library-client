@@ -14,7 +14,7 @@ export const ProtectedRoute = () => {
   const isAuth = useStoreSelector((state) => state.user.isAuth)
   const dispatch = useStoreDispatch()
 
-  console.log(isAuth)
+  if (token) console.log(token)
 
   useLayoutEffect(() => {
     if (token) dispatch(signIn())
