@@ -6,7 +6,9 @@ import * as S from './styles'
 
 import * as A from '../styles'
 
+import { useStoreDispatch } from 'src/hooks/useStoreDispatch'
 import { authAPI } from 'src/services/auth'
+import { setUserId, setUserName } from 'src/store/user'
 import { ROUTES } from 'src/utils/constants/routes'
 import { LocalStorage } from 'src/utils/helpers/localStorage'
 
@@ -17,6 +19,8 @@ type FormData = {
 
 export const SignIn = () => {
   const navigate = useNavigate()
+
+  const dispatch = useStoreDispatch()
 
   const [
     userLogin,
@@ -37,7 +41,9 @@ export const SignIn = () => {
   useEffect(() => {
     if (userLoginData && userLoginData.payload && userLoginSuccess) {
       LocalStorage.setAuthToken(userLoginData.payload.token)
-      navigate('/user', { replace: true })
+      dispatch(setUserId(userLoginData.payload.user._id))
+      dispatch(setUserName(userLoginData.payload.user.name))
+      navigate('/home', { replace: true })
     }
   }, [userLoginData, userLoginSuccess])
 

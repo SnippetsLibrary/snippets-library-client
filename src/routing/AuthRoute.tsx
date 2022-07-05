@@ -3,13 +3,13 @@ import { Navigate, Outlet } from 'react-router-dom'
 
 import { useStoreDispatch } from 'src/hooks/useStoreDispatch'
 import { useStoreSelector } from 'src/hooks/useStoreSelector'
-import { signIn } from 'src/store/user'
+import { signIn } from 'src/store/auth'
 import { ROUTES } from 'src/utils/constants/routes'
 import { LocalStorage } from 'src/utils/helpers/localStorage'
 
 export const AuthRoute = () => {
   const token = LocalStorage.getAuthToken()
-  const isAuth = useStoreSelector((state) => state.user.isAuth)
+  const isAuth = useStoreSelector((state) => state.auth.isAuth)
   const dispatch = useStoreDispatch()
 
   useLayoutEffect(() => {

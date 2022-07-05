@@ -6,15 +6,13 @@ import { useStoreSelector } from 'src/hooks/useStoreSelector'
 import { WelcomeLayout } from 'src/layouts'
 import { Error } from 'src/pages'
 
-import { signIn } from 'src/store/user'
+import { signIn } from 'src/store/auth'
 import { LocalStorage } from 'src/utils/helpers/localStorage'
 
 export const ProtectedRoute = () => {
   const token = LocalStorage.getAuthToken()
-  const isAuth = useStoreSelector((state) => state.user.isAuth)
+  const isAuth = useStoreSelector((state) => state.auth.isAuth)
   const dispatch = useStoreDispatch()
-
-  if (token) console.log(token)
 
   useLayoutEffect(() => {
     if (token) dispatch(signIn())

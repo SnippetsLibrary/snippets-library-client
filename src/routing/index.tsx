@@ -12,6 +12,7 @@ import {
   Error,
   Home,
   Library,
+  Profile,
   Search,
   SignIn,
   SignUp,
@@ -73,7 +74,6 @@ export const Routing = () => {
             </MainLayout>
           }
         />
-
         <Route
           path={ROUTES.error}
           element={
@@ -95,6 +95,14 @@ export const Routing = () => {
           element={
             <MainLayout>
               <Community />
+            </MainLayout>
+          }
+        />
+        <Route
+          path={ROUTES.userProfile}
+          element={
+            <MainLayout>
+              <Profile />
             </MainLayout>
           }
         />

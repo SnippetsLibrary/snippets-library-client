@@ -18,7 +18,7 @@ export const userAPI = createApi({
       }),
       providesTags: ['Users'],
     }),
-    getUser: build.query<I_Response<I_User>, string>({
+    getUser: build.query<I_Response<I_User>, string | null>({
       query: (id) => ({
         url: `/users/${id}`,
       }),

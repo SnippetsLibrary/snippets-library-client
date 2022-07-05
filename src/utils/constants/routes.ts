@@ -11,9 +11,10 @@ export enum ROUTES {
   docs = '/docs',
 
   // Main
-  userHome = '/user',
-  search = '/user/search',
-  community = '/user/community',
+  userHome = '/home',
+  userProfile = '/:userName',
+  search = '/home/search',
+  community = '/home/community',
 
   // Auth
   auth = '/auth',

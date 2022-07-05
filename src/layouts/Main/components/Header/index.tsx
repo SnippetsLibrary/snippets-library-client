@@ -1,12 +1,15 @@
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { headerLinks } from './data'
+import { E_HeaderLinks, headerLinks } from './data'
 import * as S from './styles'
 
+import { useStoreSelector } from 'src/hooks/useStoreSelector'
 import { ROUTES } from 'src/utils/constants/routes'
 import { LocalStorage } from 'src/utils/helpers/localStorage'
 
 export const MainHeader = () => {
+  const userName = useStoreSelector((state) => state.user.userName)
+
   const location = useLocation()
   const navigate = useNavigate()
 
@@ -14,6 +17,12 @@ export const MainHeader = () => {
     LocalStorage.deleteAuthToken()
     navigate('/', { replace: true })
     window.location.reload()
+  }
+
+  const Actions = {
+    [E_HeaderLinks.search]: ROUTES.search,
+    [E_HeaderLinks.community]: ROUTES.community,
+    [E_HeaderLinks.profile]: `/${userName}`,
   }
 
   return (
@@ -24,7 +33,7 @@ export const MainHeader = () => {
           {headerLinks.map((link, index) => {
             return (
               <S.ListItem location={location.pathname.includes(link.leadsTo)} key={index}>
-                <S.NavLink to={link.leadsTo}>{link.label}</S.NavLink>
+                <S.NavLink to={Actions[link.leadsTo]}>{link.label}</S.NavLink>
               </S.ListItem>
             )
           })}

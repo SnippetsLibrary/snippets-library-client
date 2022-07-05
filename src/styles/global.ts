@@ -28,6 +28,10 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
+  button {
+    font-family: GTWalsheimPro, sans-serif;
+  }
+
   h1,
   h2,
   h3,

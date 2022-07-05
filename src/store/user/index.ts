@@ -1,26 +1,29 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createSlice } from '@reduxjs/toolkit'
 
 interface I_State {
-  isAuth: boolean
+  userId: string | null
+  userName: string | null
 }
 
 const initialState: I_State = {
-  isAuth: false,
+  userName: null,
+  userId: null,
 }
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
-    signIn: (state) => {
-      state.isAuth = true
+    setUserName: (state, action: any) => {
+      state.userName = action.payload
     },
-    signOut: (state) => {
-      state.isAuth = false
+    setUserId: (state, action: any) => {
+      state.userId = action.payload
     },
   },
 })
 
-export const { signIn, signOut } = userSlice.actions
+export const { setUserId, setUserName } = userSlice.actions
 
 export default userSlice
