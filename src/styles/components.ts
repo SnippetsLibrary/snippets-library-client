@@ -5,7 +5,7 @@ export const Divider = styled.hr`
 
   margin: 0;
 
-  border-color: rgba(0, 0, 0, 0.8);
+  border-color: #444;
   border-style: solid;
   border-width: 0;
   border-bottom-width: thin;

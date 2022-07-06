@@ -5,6 +5,7 @@ export interface I_User {
   name: string
   email: string
   about?: string
+  photo?: string
   password?: string
   posts?: Array<string>
   totalPosts?: number

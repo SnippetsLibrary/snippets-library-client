@@ -9,6 +9,7 @@ import { Error } from '../404'
 
 import { useStoreSelector } from 'src/hooks/useStoreSelector'
 import { userAPI } from 'src/services/user'
+import * as C from 'src/styles/components'
 
 export const Profile = () => {
   const params = useParams()
@@ -21,14 +22,22 @@ export const Profile = () => {
     isLoading: userDataLoading,
   } = userAPI.useGetUserQuery(userId)
 
-  if (userDataLoading) return <LinearProgress />
+  if (userDataLoading)
+    return (
+      <S.Profile>
+        <LinearProgress />
+      </S.Profile>
+    )
 
   if (userName === params.userName && userData && userData.payload && userDataSuccess) {
     return (
       <S.Profile>
         <S.Inner>
-          <UserSection userData={userData} />
-          <ContentSection />
+          <C.Divider />
+          <S.InnerBox>
+            <UserSection userData={userData} />
+            <ContentSection />
+          </S.InnerBox>
         </S.Inner>
       </S.Profile>
     )

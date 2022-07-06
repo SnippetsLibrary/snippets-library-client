@@ -25,8 +25,10 @@ export const userAPI = createApi({
       providesTags: ['Users'],
     }),
     updateUser: build.mutation<I_Response<I_User>, I_UserUpdate>({
-      query: () => ({
+      query: (body) => ({
         url: '/users/update',
+        method: 'POST',
+        body,
       }),
       invalidatesTags: ['Users'],
     }),
