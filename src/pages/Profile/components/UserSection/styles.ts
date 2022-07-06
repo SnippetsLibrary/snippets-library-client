@@ -15,6 +15,7 @@ export const UserAvatar = styled.img`
   width: 100%;
   height: 296px;
 
+  background-color: #111;
   border-radius: 50%;
   box-shadow: 0 0 0 1px rgba(205, 217, 229, 0.3);
 `

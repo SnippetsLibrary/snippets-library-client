@@ -1,9 +1,7 @@
 import styled from 'styled-components'
 
 export const Profile = styled.div`
-  padding-bottom: 256px;
-
-  background-color: ${({ theme }) => theme.colors.library.backgroundSecondary};
+  padding-bottom: 128px;
 `
 
 export const Inner = styled.div`

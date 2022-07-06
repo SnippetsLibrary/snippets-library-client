@@ -1,5 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+import { LocalStorage } from 'src/utils/helpers/localStorage'
+
 interface I_State {
   isAuth: boolean
 }
@@ -17,6 +19,7 @@ const AuthSlice = createSlice({
     },
     signOut: (state) => {
       state.isAuth = false
+      LocalStorage.deleteAuthToken()
     },
   },
 })

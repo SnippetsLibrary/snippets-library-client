@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import * as S from './styles'
@@ -19,10 +19,7 @@ type FormData = {
 export const UserSection = ({ userData }: I_UserSectionProps) => {
   const [editMode, setEditMode] = useState<boolean>(false)
 
-  const [
-    userUpdate,
-    { data: userUpdateData, isSuccess: userUpdateSuccess, isLoading: userUpdateLoading },
-  ] = userAPI.useUpdateUserMutation()
+  const [userUpdate, { isSuccess: userUpdateSuccess }] = userAPI.useUpdateUserMutation()
 
   const {
     register,
@@ -47,6 +44,10 @@ export const UserSection = ({ userData }: I_UserSectionProps) => {
   const handleEditModeSave = () => {
     userUpdate({ name: getValues('name'), about: getValues('about') })
   }
+
+  useEffect(() => {
+    if (userUpdateSuccess) handleEditModeClose()
+  }, [userUpdateSuccess])
 
   if (userData.payload) {
     return (

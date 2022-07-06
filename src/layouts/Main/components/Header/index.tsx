@@ -3,18 +3,19 @@ import { useLocation, useNavigate } from 'react-router-dom'
 import { E_HeaderLinks, headerLinks } from './data'
 import * as S from './styles'
 
+import { useStoreDispatch } from 'src/hooks/useStoreDispatch'
 import { useStoreSelector } from 'src/hooks/useStoreSelector'
+import { signOut } from 'src/store/auth'
 import { ROUTES } from 'src/utils/constants/routes'
-import { LocalStorage } from 'src/utils/helpers/localStorage'
 
 export const MainHeader = () => {
   const userName = useStoreSelector((state) => state.user.userName)
-
+  const dispatch = useStoreDispatch()
   const location = useLocation()
   const navigate = useNavigate()
 
   const handleLogout = () => {
-    LocalStorage.deleteAuthToken()
+    dispatch(signOut())
     navigate('/', { replace: true })
     window.location.reload()
   }

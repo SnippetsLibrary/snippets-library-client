@@ -17,9 +17,11 @@ export const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
     
-
+    
     font-family: GTWalsheimPro, sans-serif;
     font-size: 16px;
+    
+    background-color: #111;
   }
 
   * {
