@@ -1,15 +1,25 @@
 import { I_Pagination } from './app'
 
+type T_UserContacts = {
+  phone?: string
+  linkedin?: string
+  telegram?: string
+  instagram?: string
+  site?: string
+  other?: string
+}
+
 export interface I_User {
   _id: string
-  name: string
-  email: string
+  alias: string
+  name?: string
+  status?: string
   about?: string
+  email: string
   photo?: string
-  password?: string
-  posts?: Array<string>
+  contacts?: T_UserContacts
   totalPosts?: number
-  __v?: number
+  totalSaves?: number
 }
 
 export interface I_Users extends I_Pagination {

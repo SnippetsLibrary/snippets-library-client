@@ -42,7 +42,7 @@ export const SignIn = () => {
     if (userLoginData && userLoginData.payload && userLoginSuccess) {
       LocalStorage.setAuthToken(userLoginData.payload.token)
       dispatch(setUserId(userLoginData.payload.user._id))
-      dispatch(setUserName(userLoginData.payload.user.name))
+      dispatch(setUserName(userLoginData.payload.user.alias))
       navigate('/home', { replace: true })
     }
   }, [userLoginData, userLoginSuccess])

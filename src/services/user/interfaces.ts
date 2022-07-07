@@ -1,5 +1,5 @@
 export interface I_UserUpdate {
-  name?: string
+  alias?: string
   password?: string
   about?: string
   saves?: Array<string>

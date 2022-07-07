@@ -12,7 +12,7 @@ export interface I_UserLoginRequest {
 }
 
 export interface I_UserRegisterRequest {
-  name: string
+  alias: string
   email: string
   password: string
 }

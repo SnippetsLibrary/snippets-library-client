@@ -12,7 +12,7 @@ import { regExp } from 'src/utils/helpers/regExp'
 import { toasts } from 'src/utils/helpers/toasts'
 
 type FormData = {
-  name: string
+  alias: string
   email: string
   password: string
 }
@@ -32,7 +32,7 @@ export const SignUp = () => {
 
   const handleRegister = () => {
     userRegister({
-      name: getValues('name'),
+      alias: getValues('alias'),
       email: getValues('email'),
       password: getValues('password'),
     })
@@ -62,10 +62,10 @@ export const SignUp = () => {
             autoComplete='off'
             autoCorrect='off'
             spellCheck='false'
-            nameError={Boolean(errors.name)}
-            {...register('name', { required: true })}
+            nameError={Boolean(errors.alias)}
+            {...register('alias', { required: true })}
           />
-          {errors.name && <A.InputErrorText>Please enter a valid name</A.InputErrorText>}
+          {errors.alias && <A.InputErrorText>Please enter a valid name</A.InputErrorText>}
         </A.InputBox>
         <A.InputBox>
           <A.EmailInput

@@ -15,7 +15,18 @@ export const UserAvatar = styled.img`
   width: 100%;
   height: 296px;
 
-  background-color: #111;
+  background-color: #222;
+  border-radius: 50%;
+  box-shadow: 0 0 0 1px rgba(205, 217, 229, 0.3);
+`
+
+export const NoUserAvatar = styled.div`
+  flex-shrink: 0;
+
+  width: 100%;
+  height: 296px;
+
+  background-color: #222;
   border-radius: 50%;
   box-shadow: 0 0 0 1px rgba(205, 217, 229, 0.3);
 `
@@ -170,14 +181,61 @@ export const Label = styled.label`
   color: #adbac7;
 `
 
+export const ContactInputBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  width: 100%;
+`
+
+export const ContactInputBoxInner = styled.div`
+  display: flex;
+  gap: 6px;
+
+  width: 100%;
+`
+
+export const ContactLabel = styled.label`
+  min-width: 32px;
+
+  font-size: 14px;
+  line-height: 1.5;
+  color: #adbac7;
+`
+
 export const NameInput = styled.input`
   width: 100%;
-  min-width: 100%;
   max-width: 100%;
   padding: 5px 12px;
 
   font-family: GTWalsheimPro, sans-serif;
   font-size: 14px;
+  line-height: 20px;
+  color: #adbac7;
+  vertical-align: middle;
+
+  background-color: #111;
+  background-repeat: no-repeat;
+  background-position: right 8px center;
+  border: 1px solid #444c56;
+  border-radius: 6px;
+  box-shadow: 0 0 transparent;
+
+  transition: box-shadow 0.2s ease 0s, color 0.2s ease 0s;
+
+  &::placeholder {
+    opacity: 0.35;
+  }
+`
+
+export const ContactNameInput = styled.input`
+  width: 100%;
+  max-width: 100%;
+  padding: 2px 12px;
+
+  font-family: GTWalsheimPro, sans-serif;
+  font-size: 12px;
   line-height: 20px;
   color: #adbac7;
   vertical-align: middle;
@@ -202,6 +260,7 @@ export const TextArea = styled.textarea`
   max-width: 100%;
   padding: 5px 12px;
 
+  font-family: GTWalsheimPro, sans-serif;
   font-size: 14px;
   line-height: 20px;
   color: #adbac7;
@@ -215,4 +274,9 @@ export const TextArea = styled.textarea`
   box-shadow: 0 0 transparent;
 `
 
-export const InputErrorText = styled.span``
+export const InputErrorText = styled.span`
+  font-size: 14px;
+  line-height: 20px;
+  color: #adbac7;
+  vertical-align: middle;
+`
