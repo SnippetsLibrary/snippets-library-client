@@ -49,7 +49,13 @@ export const UserEmail = styled.span`
   color: #768390;
 `
 
-export const UserAbout = styled.span`
+interface I_UserAboutProps {
+  isContext: boolean
+}
+
+export const UserAbout = styled.span<I_UserAboutProps>`
+  display: ${({ isContext }) => (isContext ? 'none' : '')};
+
   font-size: 18px;
   color: #adbac7;
 `

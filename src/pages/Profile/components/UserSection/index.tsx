@@ -140,16 +140,22 @@ export const UserSection = ({ userData }: I_UserSectionProps) => {
               <S.UserName>{userData.payload.alias}</S.UserName>
               <S.UserEmail>{userData.payload.email}</S.UserEmail>
             </S.UserMainInfo>
-            <S.UserAbout>{userData.payload.about}</S.UserAbout>
+            <S.UserAbout isContext={getValues('about') === '' || getValues('about') === null}>
+              {userData.payload.about}
+            </S.UserAbout>
             <S.UserFooter>
               <S.UserContactInputBox>
                 {contactsData.map((item, index) => {
                   return (
                     <div
-                      style={getValues(item.label) === '' || null ? { display: 'none' } : {}}
+                      style={
+                        getValues(item.label) === '' || getValues(item.label) === null
+                          ? { display: 'none' }
+                          : {}
+                      }
                       key={index}
                     >
-                      {getValues(item.label) === '' || null ? null : (
+                      {getValues(item.label) === '' || getValues(item.label) === null ? null : (
                         <S.UserContactInputBoxInner>
                           <S.UserLink href={getValues(item.label)}>{item.icon}</S.UserLink>
                         </S.UserContactInputBoxInner>
