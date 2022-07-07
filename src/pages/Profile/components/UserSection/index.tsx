@@ -4,6 +4,7 @@ import { useForm } from 'react-hook-form'
 import { contactsData } from './data'
 import * as S from './styles'
 
+import { useStoreSelector } from 'src/hooks/useStoreSelector'
 import { userAPI } from 'src/services/user'
 import * as C from 'src/styles/components'
 import { I_Response } from 'src/typings/interfaces/response'
@@ -24,6 +25,8 @@ type FormData = {
 
 export const UserSection = ({ userData }: I_UserSectionProps) => {
   const [editMode, setEditMode] = useState<boolean>(false)
+
+  const userId = useStoreSelector((state) => state.user.userId)
 
   const [userUpdate, { isSuccess: userUpdateSuccess }] = userAPI.useUpdateUserMutation()
 
@@ -147,12 +150,8 @@ export const UserSection = ({ userData }: I_UserSectionProps) => {
               <S.UserContactInputBox>
                 {contactsData.map((item, index) => {
                   return (
-                    <div
-                      style={
-                        getValues(item.label) === '' || getValues(item.label) === null
-                          ? { display: 'none' }
-                          : {}
-                      }
+                    <S.UserCheckValueBox
+                      isContext={getValues(item.label) === '' || getValues(item.label) === null}
                       key={index}
                     >
                       {getValues(item.label) === '' || getValues(item.label) === null ? null : (
@@ -160,11 +159,13 @@ export const UserSection = ({ userData }: I_UserSectionProps) => {
                           <S.UserLink href={getValues(item.label)}>{item.icon}</S.UserLink>
                         </S.UserContactInputBoxInner>
                       )}
-                    </div>
+                    </S.UserCheckValueBox>
                   )
                 })}
               </S.UserContactInputBox>
-              <S.UserEditButton onClick={handleEditModeActive}>Edit profile</S.UserEditButton>
+              {userData.payload._id === userId ? (
+                <S.UserEditButton onClick={handleEditModeActive}>Edit profile</S.UserEditButton>
+              ) : null}
             </S.UserFooter>
           </S.UserSection>
         )}

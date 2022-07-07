@@ -7,20 +7,17 @@ import * as S from './styles'
 
 import { Error } from '../404'
 
-import { useStoreSelector } from 'src/hooks/useStoreSelector'
 import { userAPI } from 'src/services/user'
 import * as C from 'src/styles/components'
 
 export const Profile = () => {
   const params = useParams()
-  const userId = useStoreSelector((state) => state.user.userId)
-  const userName = useStoreSelector((state) => state.user.userName)
 
   const {
     data: userData,
     isSuccess: userDataSuccess,
     isLoading: userDataLoading,
-  } = userAPI.useGetUserQuery(userId)
+  } = userAPI.useGetUserQuery(params.userName!)
 
   if (userDataLoading)
     return (
@@ -29,7 +26,7 @@ export const Profile = () => {
       </S.Profile>
     )
 
-  if (userName === params.userName && userData && userData.payload && userDataSuccess) {
+  if (userData && userData.payload && userDataSuccess) {
     return (
       <S.Profile>
         <S.Inner>
