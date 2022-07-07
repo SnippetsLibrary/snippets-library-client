@@ -209,11 +209,11 @@ export const UserContactInputBox = styled.div`
   gap: 6px;
 `
 
-interface I_UserCheckValueBox {
+interface I_UserCheckValueBoxProps {
   isContext: boolean
 }
 
-export const UserCheckValueBox = styled.div<I_UserCheckValueBox>`
+export const UserCheckValueBox = styled.div<I_UserCheckValueBoxProps>`
   display: ${({ isContext }) => (isContext ? 'none' : '')};
 `
 

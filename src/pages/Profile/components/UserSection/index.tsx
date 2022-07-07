@@ -141,7 +141,9 @@ export const UserSection = ({ userData }: I_UserSectionProps) => {
             )}
             <S.UserMainInfo>
               <S.UserName>{userData.payload.alias}</S.UserName>
-              <S.UserEmail>{userData.payload.email}</S.UserEmail>
+              {userData.payload._id === userId ? (
+                <S.UserEmail>{userData.payload.email}</S.UserEmail>
+              ) : null}
             </S.UserMainInfo>
             <S.UserAbout isContext={getValues('about') === '' || getValues('about') === null}>
               {userData.payload.about}
