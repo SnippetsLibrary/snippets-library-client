@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 
-import { contactsData, E_ContactsData } from './data'
+import { contactsData } from './data'
 import * as S from './styles'
 
 import { userAPI } from 'src/services/user'
