@@ -5,11 +5,6 @@ import { Fonts } from './fonts'
 export const GlobalStyles = createGlobalStyle`
   ${Fonts}
 
-  #root {
-    width: 100%;
-    height: 100%;
-  }
-
   html,
   body {
     height: 100%;

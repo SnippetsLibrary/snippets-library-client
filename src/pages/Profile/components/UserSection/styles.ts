@@ -54,12 +54,21 @@ export const UserAbout = styled.span`
   color: #adbac7;
 `
 
+export const UserFooter = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  width: 100%;
+`
+
 export const UserEditButton = styled.button`
   cursor: pointer;
   user-select: none;
 
   position: relative;
 
+  width: 100%;
   padding: 6px 16px;
 
   font-size: 14px;
@@ -189,6 +198,11 @@ export const ContactInputBox = styled.div`
   width: 100%;
 `
 
+export const UserContactInputBox = styled.div`
+  display: flex;
+  gap: 6px;
+`
+
 export const ContactInputBoxInner = styled.div`
   display: flex;
   gap: 6px;
@@ -196,7 +210,22 @@ export const ContactInputBoxInner = styled.div`
   width: 100%;
 `
 
+export const UserContactInputBoxInner = styled.div`
+  display: flex;
+
+  width: fit-content;
+
+  a {
+    svg {
+      display: flex;
+    }
+  }
+`
+
 export const ContactLabel = styled.label`
+  display: flex;
+  align-items: center;
+
   min-width: 32px;
 
   font-size: 14px;
@@ -279,4 +308,13 @@ export const InputErrorText = styled.span`
   line-height: 20px;
   color: #adbac7;
   vertical-align: middle;
+`
+
+export const UserLink = styled.a`
+  color: #adbac7;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `

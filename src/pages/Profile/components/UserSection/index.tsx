@@ -16,10 +16,10 @@ interface I_UserSectionProps {
 type FormData = {
   alias: string
   about: string
-  instagram: E_ContactsData.instagram
-  linkedin: E_ContactsData.linkedin
-  telegram: E_ContactsData.telegram
-  other: E_ContactsData.other
+  instagram: string
+  linkedin: string
+  telegram: string
+  other: string
 }
 
 export const UserSection = ({ userData }: I_UserSectionProps) => {
@@ -36,6 +36,10 @@ export const UserSection = ({ userData }: I_UserSectionProps) => {
     defaultValues: {
       alias: userData.payload?.alias,
       about: userData.payload?.about,
+      instagram: userData.payload?.contacts?.instagram,
+      linkedin: userData.payload?.contacts?.linkedin,
+      telegram: userData.payload?.contacts?.telegram,
+      other: userData.payload?.contacts?.other,
     },
   })
 
@@ -48,16 +52,23 @@ export const UserSection = ({ userData }: I_UserSectionProps) => {
   }
 
   const handleEditModeSave = () => {
-    userUpdate({ alias: getValues('alias'), about: getValues('about') })
+    userUpdate({
+      alias: getValues('alias'),
+      about: getValues('about'),
+      contacts: {
+        instagram: getValues('instagram'),
+        linkedin: getValues('linkedin'),
+        telegram: getValues('telegram'),
+        other: getValues('other'),
+      },
+    })
   }
 
   useEffect(() => {
     if (userUpdateSuccess) handleEditModeClose()
   }, [userUpdateSuccess])
 
-  console.log(userData.payload)
-
-  if (userData.payload) {
+  if (userData.payload && userData.payload.contacts) {
     return (
       <>
         {editMode ? (
@@ -108,15 +119,12 @@ export const UserSection = ({ userData }: I_UserSectionProps) => {
                         spellCheck='false'
                         {...register(item.label)}
                       />
-                      {errors.alias && (
-                        <S.InputErrorText>Please enter a valid {item.label}</S.InputErrorText>
-                      )}
                     </S.ContactInputBoxInner>
                   )
                 })}
               </S.ContactInputBox>
               <S.UserEditButtons>
-                <S.UserSaveButton>Save</S.UserSaveButton>
+                <S.UserSaveButton type='submit'>Save</S.UserSaveButton>
                 <S.UserCancelButton onClick={handleEditModeClose}>Cancel</S.UserCancelButton>
               </S.UserEditButtons>
             </S.Form>
@@ -133,7 +141,25 @@ export const UserSection = ({ userData }: I_UserSectionProps) => {
               <S.UserEmail>{userData.payload.email}</S.UserEmail>
             </S.UserMainInfo>
             <S.UserAbout>{userData.payload.about}</S.UserAbout>
-            <S.UserEditButton onClick={handleEditModeActive}>Edit profile</S.UserEditButton>
+            <S.UserFooter>
+              <S.UserContactInputBox>
+                {contactsData.map((item, index) => {
+                  return (
+                    <div
+                      style={getValues(item.label) === '' || null ? { display: 'none' } : {}}
+                      key={index}
+                    >
+                      {getValues(item.label) === '' || null ? null : (
+                        <S.UserContactInputBoxInner>
+                          <S.UserLink href={getValues(item.label)}>{item.icon}</S.UserLink>
+                        </S.UserContactInputBoxInner>
+                      )}
+                    </div>
+                  )
+                })}
+              </S.UserContactInputBox>
+              <S.UserEditButton onClick={handleEditModeActive}>Edit profile</S.UserEditButton>
+            </S.UserFooter>
           </S.UserSection>
         )}
       </>

@@ -1,6 +1,6 @@
 import { I_Pagination } from './app'
 
-type T_UserContacts = {
+export type T_UserContacts = {
   phone?: string
   linkedin?: string
   telegram?: string
