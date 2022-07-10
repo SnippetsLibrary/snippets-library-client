@@ -13,6 +13,7 @@ export enum ROUTES {
   // Main
   userHome = '/home',
   userProfile = '/:userName',
+  userProfileSettings = '/:userName/settings',
   search = '/home/search',
   community = '/home/community',
 

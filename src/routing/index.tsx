@@ -13,6 +13,7 @@ import {
   Home,
   Library,
   Profile,
+  ProfileSettings,
   Search,
   SignIn,
   SignUp,
@@ -103,6 +104,14 @@ export const Routing = () => {
           element={
             <MainLayout>
               <Profile />
+            </MainLayout>
+          }
+        />
+        <Route
+          path={ROUTES.userProfileSettings}
+          element={
+            <MainLayout>
+              <ProfileSettings />
             </MainLayout>
           }
         />

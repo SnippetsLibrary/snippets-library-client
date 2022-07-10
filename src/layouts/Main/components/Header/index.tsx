@@ -1,14 +1,22 @@
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
+import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { E_HeaderLinks, headerLinks } from './data'
+import { E_HeaderLinks, E_MenuLinks, headerLinks, menuLinks } from './data'
 import * as S from './styles'
+import { animation } from './variants'
 
 import { useStoreDispatch } from 'src/hooks/useStoreDispatch'
 import { useStoreSelector } from 'src/hooks/useStoreSelector'
+import * as MS from 'src/layouts/styles'
 import { signOut } from 'src/store/auth'
+import * as C from 'src/styles/components'
 import { ROUTES } from 'src/utils/constants/routes'
 
 export const MainHeader = () => {
+  const [menu, setMenu] = useState<boolean>(false)
+
   const userName = useStoreSelector((state) => state.user.userName)
   const dispatch = useStoreDispatch()
   const location = useLocation()
@@ -20,10 +28,22 @@ export const MainHeader = () => {
     window.location.reload()
   }
 
-  const Actions = {
+  const handleMenuToggle = () => {
+    setMenu((prev) => !prev)
+  }
+
+  const handleMenuClose = () => {
+    setMenu(false)
+  }
+
+  const HeaderLinksActions = {
     [E_HeaderLinks.search]: ROUTES.search,
     [E_HeaderLinks.community]: ROUTES.community,
-    [E_HeaderLinks.profile]: `/${userName}`,
+  }
+
+  const MenuLinksActions = {
+    [E_MenuLinks.profile]: `/${userName}`,
+    [E_MenuLinks.settings]: `/${userName}/settings`,
   }
 
   return (
@@ -34,13 +54,33 @@ export const MainHeader = () => {
           {headerLinks.map((link, index) => {
             return (
               <S.ListItem location={location.pathname.includes(link.leadsTo)} key={index}>
-                <S.NavLink to={Actions[link.leadsTo]}>{link.label}</S.NavLink>
+                <S.NavLink to={HeaderLinksActions[link.leadsTo]}>{link.label}</S.NavLink>
               </S.ListItem>
             )
           })}
         </S.UnorderedList>
       </S.HeaderInner>
-      <S.LogoutButton onClick={handleLogout}>Logout</S.LogoutButton>
+      <MS.HeaderMore>
+        {menu && <MS.PopoverOverlay onClick={handleMenuClose} />}
+        <MS.More onClick={handleMenuToggle}>
+          {menu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
+        </MS.More>
+        <MS.Popover animate={menu ? animation.open : animation.closed} variants={animation}>
+          {menuLinks.map((link, index) => {
+            return (
+              <MS.MoreNavLink
+                onClick={handleMenuClose}
+                key={index}
+                to={MenuLinksActions[link.leadsTo]}
+              >
+                {link.label}
+              </MS.MoreNavLink>
+            )
+          })}
+          <C.Divider style={{ width: '25%' }} />
+          <S.LogoutButton onClick={handleLogout}>Logout</S.LogoutButton>
+        </MS.Popover>
+      </MS.HeaderMore>
     </S.Header>
   )
 }

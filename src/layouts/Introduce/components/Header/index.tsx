@@ -7,6 +7,7 @@ import { headerLinks, menuLinks } from './data'
 import * as S from './styles'
 import { animation } from './variants'
 
+import * as MS from 'src/layouts/styles'
 import { ROUTES } from 'src/utils/constants/routes'
 
 export const IntroduceHeader = () => {
@@ -36,21 +37,21 @@ export const IntroduceHeader = () => {
           })}
         </S.UnorderedList>
       </S.HeaderInner>
-      <S.HeaderMore>
-        {menu && <S.PopoverOverlay onClick={handleMenuClose} />}
-        <S.More onClick={handleMenuToggle}>
+      <MS.HeaderMore>
+        {menu && <MS.PopoverOverlay onClick={handleMenuClose} />}
+        <MS.More onClick={handleMenuToggle}>
           {menu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
-        </S.More>
-        <S.Popover animate={menu ? animation.open : animation.closed} variants={animation}>
+        </MS.More>
+        <MS.Popover animate={menu ? animation.open : animation.closed} variants={animation}>
           {menuLinks.map((link, index) => {
             return (
-              <S.MoreNavLink onClick={handleMenuClose} key={index} to={link.leadsTo}>
+              <MS.MoreNavLink onClick={handleMenuClose} key={index} to={link.leadsTo}>
                 {link.label}
-              </S.MoreNavLink>
+              </MS.MoreNavLink>
             )
           })}
-        </S.Popover>
-      </S.HeaderMore>
+        </MS.Popover>
+      </MS.HeaderMore>
     </S.Header>
   )
 }

@@ -2,8 +2,6 @@ import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Header = styled.header`
-  position: relative;
-
   display: flex;
   gap: 24px;
   align-items: center;
@@ -70,16 +68,19 @@ export const ListItem = styled.li<ListItemProps>`
 export const LogoutButton = styled.button`
   cursor: pointer;
 
-  padding: 9px 16px;
-
-  font-family: GTWalsheimPro, sans-serif;
   font-size: 16px;
-  color: ${({ theme }) => theme.colors.header.navLinkActive};
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.header.background};
+  text-align: start;
   text-decoration: none;
 
-  background-color: #08f;
-  filter: brightness(1);
-  border: 0;
-  border-radius: 12px;
-  box-shadow: rgb(0 0 0 / 15%) 0px 0px 0px 0px inset, rgb(7 136 255 / 25%) 0px 2px 4px 0px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: #9c1bff;
+  }
 `
