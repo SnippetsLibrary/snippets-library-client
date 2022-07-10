@@ -86,6 +86,8 @@ export const LogoutButton = styled.button`
 `
 
 export const ProfileLabel = styled.span`
+  padding: 12px 18px;
+
   font-size: 16px;
   font-weight: 500;
   color: ${({ theme }) => theme.colors.header.background};

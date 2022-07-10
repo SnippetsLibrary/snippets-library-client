@@ -66,9 +66,7 @@ export const MainHeader = () => {
           {menu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         </MS.More>
         <MS.Popover animate={menu ? animation.open : animation.closed} variants={animation}>
-          <MS.PopoverBox>
-            <S.ProfileLabel>Signed in as {userName}</S.ProfileLabel>
-          </MS.PopoverBox>
+          <S.ProfileLabel>user: {userName}</S.ProfileLabel>
           <C.Divider />
           <MS.PopoverBox>
             {menuLinks.map((link, index) => {

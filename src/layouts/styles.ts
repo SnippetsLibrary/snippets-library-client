@@ -38,16 +38,16 @@ export const PopoverOverlay = styled.div`
 `
 
 export const Popover = styled(motion.div)`
-  position: fixed;
+  position: absolute;
   z-index: 100;
   top: 60px;
-  right: 16px;
+  right: 0;
 
   overflow-y: hidden;
   display: flex;
   flex-direction: column;
 
-  width: 172px;
+  width: 128px;
   max-height: 100vh;
 
   background-color: ${({ theme }) => theme.colors.header.navigation};
@@ -60,7 +60,7 @@ export const PopoverBox = styled.div`
   flex-direction: column;
   gap: 12px;
 
-  padding: 12px;
+  padding: 18px;
 `
 
 export const MoreNavLink = styled(Link)`
