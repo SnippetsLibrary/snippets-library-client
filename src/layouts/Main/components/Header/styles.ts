@@ -84,3 +84,10 @@ export const LogoutButton = styled.button`
     color: #9c1bff;
   }
 `
+
+export const ProfileLabel = styled.span`
+  font-size: 16px;
+  font-weight: 500;
+  color: ${({ theme }) => theme.colors.header.background};
+  text-decoration: none;
+`

@@ -66,19 +66,24 @@ export const MainHeader = () => {
           {menu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         </MS.More>
         <MS.Popover animate={menu ? animation.open : animation.closed} variants={animation}>
-          {menuLinks.map((link, index) => {
-            return (
-              <MS.MoreNavLink
-                onClick={handleMenuClose}
-                key={index}
-                to={MenuLinksActions[link.leadsTo]}
-              >
-                {link.label}
-              </MS.MoreNavLink>
-            )
-          })}
-          <C.Divider style={{ width: '25%' }} />
-          <S.LogoutButton onClick={handleLogout}>Logout</S.LogoutButton>
+          <MS.PopoverBox>
+            <S.ProfileLabel>Signed in as {userName}</S.ProfileLabel>
+          </MS.PopoverBox>
+          <C.Divider />
+          <MS.PopoverBox>
+            {menuLinks.map((link, index) => {
+              return (
+                <MS.MoreNavLink
+                  onClick={handleMenuClose}
+                  key={index}
+                  to={MenuLinksActions[link.leadsTo]}
+                >
+                  {link.label}
+                </MS.MoreNavLink>
+              )
+            })}
+            <S.LogoutButton onClick={handleLogout}>Sign out</S.LogoutButton>
+          </MS.PopoverBox>
         </MS.Popover>
       </MS.HeaderMore>
     </S.Header>

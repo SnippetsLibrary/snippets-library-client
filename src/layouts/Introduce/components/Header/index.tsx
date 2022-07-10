@@ -43,13 +43,15 @@ export const IntroduceHeader = () => {
           {menu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         </MS.More>
         <MS.Popover animate={menu ? animation.open : animation.closed} variants={animation}>
-          {menuLinks.map((link, index) => {
-            return (
-              <MS.MoreNavLink onClick={handleMenuClose} key={index} to={link.leadsTo}>
-                {link.label}
-              </MS.MoreNavLink>
-            )
-          })}
+          <MS.PopoverBox>
+            {menuLinks.map((link, index) => {
+              return (
+                <MS.MoreNavLink onClick={handleMenuClose} key={index} to={link.leadsTo}>
+                  {link.label}
+                </MS.MoreNavLink>
+              )
+            })}
+          </MS.PopoverBox>
         </MS.Popover>
       </MS.HeaderMore>
     </S.Header>
