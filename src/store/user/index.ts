@@ -11,7 +11,7 @@ const initialState: I_State = {
   userId: null,
 }
 
-const userSlice = createSlice({
+const UserSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
@@ -24,6 +24,6 @@ const userSlice = createSlice({
   },
 })
 
-export const { setUserId, setUserName } = userSlice.actions
+export const { setUserId, setUserName } = UserSlice.actions
 
-export default userSlice
+export default UserSlice

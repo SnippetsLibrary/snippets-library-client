@@ -12,22 +12,24 @@ import {
 import storage from 'redux-persist/lib/storage'
 
 import AuthSlice from './auth'
-import userSlice from './user'
+import UserSlice from './user'
 
 import { authAPI } from 'src/services/auth'
+import { postAPI } from 'src/services/post'
 import { userAPI } from 'src/services/user'
 
 const persistConfig = {
   key: 'snippets',
   storage,
-  whitelist: [userSlice.name],
+  whitelist: [UserSlice.name],
 }
 
 const rootReducer = combineReducers({
   [userAPI.reducerPath]: userAPI.reducer,
   [authAPI.reducerPath]: authAPI.reducer,
+  [postAPI.reducerPath]: postAPI.reducer,
   [AuthSlice.name]: AuthSlice.reducer,
-  [userSlice.name]: userSlice.reducer,
+  [UserSlice.name]: UserSlice.reducer,
 })
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
@@ -39,7 +41,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat([userAPI.middleware, authAPI.middleware]),
+    }).concat([userAPI.middleware, authAPI.middleware, postAPI.middleware]),
 })
 
 export const persistor = persistStore(store)
