@@ -18,7 +18,13 @@ export const postAPI = createApi({
       }),
       providesTags: ['Posts'],
     }),
-    getPostVote: build.query<I_Response<I_PostVote>, { id: string; poll: boolean }>({
+    getPost: build.query<I_Response<I_PostData>, string>({
+      query: (id) => ({
+        url: `/posts/${id}`,
+      }),
+      providesTags: ['Posts'],
+    }),
+    getPostVote: build.query<I_Response<I_PostVote>, { id: string; poll: string }>({
       query: ({ id, poll }) => ({
         url: `/posts/${id}/vote?positive=${poll}`,
       }),

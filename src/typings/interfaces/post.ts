@@ -9,6 +9,8 @@ export interface I_PostPayload {
   text?: string
 }
 
+export interface I_CurrentPost {}
+
 export interface I_Post extends I_PostPayload {
   _id: string
   author: T_PostAuthor

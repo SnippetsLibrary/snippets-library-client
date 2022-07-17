@@ -12,6 +12,7 @@ import {
   Error,
   Home,
   Library,
+  Post,
   Profile,
   ProfileSettings,
   Search,
@@ -96,6 +97,14 @@ export const Routing = () => {
           element={
             <MainLayout>
               <Community />
+            </MainLayout>
+          }
+        />
+        <Route
+          path={ROUTES.post}
+          element={
+            <MainLayout>
+              <Post />
             </MainLayout>
           }
         />

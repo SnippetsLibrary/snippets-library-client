@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
 export const Post = styled.div`
@@ -32,10 +33,16 @@ export const PostSubtitle = styled.p`
   color: rgb(98, 112, 112);
 `
 
-export const PostUserLink = styled.a`
-  font-size: 16px;
+export const PostLink = styled(Link)`
   color: rgb(98, 112, 112);
   text-decoration: none;
+  text-transform: capitalize;
+`
+
+export const PostTitleLink = styled(Link)`
+  color: #000;
+  text-decoration: none;
+  text-transform: none;
 `
 
 export const VoteBox = styled.div`

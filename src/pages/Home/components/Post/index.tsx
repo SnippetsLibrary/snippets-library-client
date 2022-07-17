@@ -7,26 +7,24 @@ import * as S from './styles'
 import { postAPI } from 'src/services/post'
 import { I_Post } from 'src/typings/interfaces/post'
 
+enum E_Poll {
+  true = 'true',
+  false = 'false',
+}
+
 export const Post = ({ posts }: { posts: I_Post[] }) => {
-  const [postVote, { data: postVoteData }] = postAPI.useLazyGetPostVoteQuery()
+  const [postVote] = postAPI.useLazyGetPostVoteQuery()
 
-  const handleUpVote = (postId: string) => () => {
+  const handleVote = (postId: string, pollDes: E_Poll) => () => {
     postVote({
       id: postId,
-      poll: 'true',
-    })
-  }
-
-  const handleDownVote = (postId: string) => () => {
-    postVote({
-      id: postId,
-      poll: 'false',
+      poll: pollDes,
     })
   }
 
   useEffect(() => {
-    if (postVoteData) console.log(postVoteData)
-  }, [postVoteData])
+    console.log(posts)
+  }, [posts])
 
   return (
     <>
@@ -34,18 +32,22 @@ export const Post = ({ posts }: { posts: I_Post[] }) => {
         return (
           <S.Post key={post._id}>
             <S.Box>
-              <S.PostUserLink href={'/' + post.author.alias}>{post.author.alias}</S.PostUserLink>
+              <S.PostLink to={'/' + post.author.alias}>{post.author.alias}</S.PostLink>
             </S.Box>
             <S.ContentBox>
-              <S.PostTitle>{post.title}</S.PostTitle>
-              <S.PostSubtitle>{post.subtitle}</S.PostSubtitle>
+              <S.PostTitle>
+                <S.PostTitleLink to={`/post/${post._id}`}>{post.title}</S.PostTitleLink>
+              </S.PostTitle>
+              <S.PostSubtitle>
+                <S.PostLink to={`/post/${post._id}`}>{post.subtitle}</S.PostLink>
+              </S.PostSubtitle>
             </S.ContentBox>
             <S.VoteBox>
-              <S.VoteButton onClick={handleUpVote(post._id)}>
+              <S.VoteButton onClick={handleVote(post._id, E_Poll.true)}>
                 <FavoriteIcon />
                 <S.VoteLabel>{post.upvotes}</S.VoteLabel>
               </S.VoteButton>
-              <S.VoteButton onClick={handleDownVote(post._id)}>
+              <S.VoteButton onClick={handleVote(post._id, E_Poll.false)}>
                 <HeartBrokenIcon />
               </S.VoteButton>
             </S.VoteBox>
