@@ -43,7 +43,7 @@ export const SignIn = () => {
       LocalStorage.setAuthToken(userLoginData.payload.token)
       dispatch(setUserId(userLoginData.payload.user._id))
       dispatch(setUserName(userLoginData.payload.user.alias))
-      navigate('/home', { replace: true })
+      navigate('/search/posts', { replace: true })
     }
   }, [userLoginData, userLoginSuccess])
 

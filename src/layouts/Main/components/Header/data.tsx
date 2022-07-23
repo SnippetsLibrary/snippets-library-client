@@ -1,16 +1,16 @@
+import { ROUTES } from 'src/utils/constants/routes'
+
 export enum E_HeaderLinks {
-  search = 'Search',
   community = 'Community',
 }
 
 interface I_HeaderLink {
   label: E_HeaderLinks
-  leadsTo: E_HeaderLinks
+  leadsTo: ROUTES
 }
 
 export const headerLinks: I_HeaderLink[] = [
-  { label: E_HeaderLinks.search, leadsTo: E_HeaderLinks.search },
-  { label: E_HeaderLinks.community, leadsTo: E_HeaderLinks.community },
+  { label: E_HeaderLinks.community, leadsTo: ROUTES.community },
 ]
 
 export enum E_MenuLinks {

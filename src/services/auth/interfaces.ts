@@ -20,4 +20,5 @@ export interface I_UserRegisterRequest {
 export interface I_UserConfirm {
   token: string
   expires: string
+  user?: any
 }

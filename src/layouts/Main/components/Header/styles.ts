@@ -68,28 +68,32 @@ export const ListItem = styled.li<ListItemProps>`
 export const LogoutButton = styled.button`
   cursor: pointer;
 
+  padding: 6px 28px;
+
   font-size: 16px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.colors.header.background};
+  font-weight: 400;
+  color: #c5d3d3;
   text-align: start;
   text-decoration: none;
+  white-space: nowrap;
 
   background-color: transparent;
   border: none;
   outline: none;
 
-  transition: all 0.3s ease;
-
   &:hover {
-    color: #9c1bff;
+    background-color: #494949;
   }
 `
 
 export const ProfileLabel = styled.span`
-  padding: 12px 18px;
+  padding: 9px 28px;
 
   font-size: 16px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.colors.header.background};
+  font-weight: 400;
+  color: #c5d3d3;
   text-decoration: none;
+  white-space: nowrap;
+
+  box-shadow: none;
 `

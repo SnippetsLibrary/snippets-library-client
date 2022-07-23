@@ -3,7 +3,7 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { useState } from 'react'
 import { useLocation, useNavigate } from 'react-router-dom'
 
-import { E_HeaderLinks, E_MenuLinks, headerLinks, menuLinks } from './data'
+import { E_MenuLinks, headerLinks, menuLinks } from './data'
 import * as S from './styles'
 import { animation } from './variants'
 
@@ -20,6 +20,9 @@ export const MainHeader = () => {
   const userName = useStoreSelector((state) => state.user.userName)
   const dispatch = useStoreDispatch()
   const location = useLocation()
+
+  console.log(location)
+
   const navigate = useNavigate()
 
   const handleLogout = () => {
@@ -36,11 +39,6 @@ export const MainHeader = () => {
     setMenu(false)
   }
 
-  const HeaderLinksActions = {
-    [E_HeaderLinks.search]: ROUTES.search,
-    [E_HeaderLinks.community]: ROUTES.community,
-  }
-
   const MenuLinksActions = {
     [E_MenuLinks.profile]: `/${userName}`,
     [E_MenuLinks.settings]: `/${userName}/settings`,
@@ -54,7 +52,7 @@ export const MainHeader = () => {
           {headerLinks.map((link, index) => {
             return (
               <S.ListItem location={location.pathname.includes(link.leadsTo)} key={index}>
-                <S.NavLink to={HeaderLinksActions[link.leadsTo]}>{link.label}</S.NavLink>
+                <S.NavLink to={link.leadsTo}>{link.label}</S.NavLink>
               </S.ListItem>
             )
           })}
@@ -66,7 +64,7 @@ export const MainHeader = () => {
           {menu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
         </MS.More>
         <MS.Popover animate={menu ? animation.open : animation.closed} variants={animation}>
-          <S.ProfileLabel>user: {userName}</S.ProfileLabel>
+          <S.ProfileLabel>{userName}</S.ProfileLabel>
           <C.Divider />
           <MS.PopoverBox>
             {menuLinks.map((link, index) => {

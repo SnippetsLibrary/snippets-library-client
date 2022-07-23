@@ -15,7 +15,6 @@ import {
   Post,
   Profile,
   ProfileSettings,
-  Search,
   SignIn,
   SignUp,
   Welcome,
@@ -81,14 +80,6 @@ export const Routing = () => {
           element={
             <MainLayout>
               <Error />
-            </MainLayout>
-          }
-        />
-        <Route
-          path={ROUTES.search}
-          element={
-            <MainLayout>
-              <Search />
             </MainLayout>
           }
         />

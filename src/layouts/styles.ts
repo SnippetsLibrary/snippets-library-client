@@ -11,6 +11,15 @@ export const HeaderMore = styled.div`
   height: 100%;
 `
 
+export const ButtonMore = styled.div`
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  height: 100%;
+`
+
 export const More = styled.button`
   cursor: pointer;
 
@@ -50,7 +59,7 @@ export const Popover = styled(motion.div)`
   width: 128px;
   max-height: 100vh;
 
-  background-color: ${({ theme }) => theme.colors.header.navigation};
+  background-color: #222828;
   border-radius: 9px;
   box-shadow: 0px 0px 15px 0 rgb(0 0 0 / 12%);
 `
@@ -58,20 +67,24 @@ export const Popover = styled(motion.div)`
 export const PopoverBox = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 12px;
 
-  padding: 18px;
+  padding: 12px 0;
 `
 
 export const MoreNavLink = styled(Link)`
-  font-size: 16px;
-  font-weight: 500;
-  color: ${({ theme }) => theme.colors.header.background};
-  text-decoration: none;
+  cursor: pointer;
 
-  transition: all 0.3s ease;
+  padding: 6px 28px;
+
+  font-size: 16px;
+  font-weight: 400;
+  color: #c5d3d3;
+  text-decoration: none;
+  white-space: nowrap;
+
+  box-shadow: none;
 
   &:hover {
-    color: #9c1bff;
+    background-color: #494949;
   }
 `

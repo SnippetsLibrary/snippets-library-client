@@ -4,7 +4,7 @@ import { I_PostVote } from './interfaces'
 
 import { baseQuery } from '../utils'
 
-import { I_PostData } from 'src/typings/interfaces/post'
+import { I_Post, I_PostData } from 'src/typings/interfaces/post'
 import { I_Response } from 'src/typings/interfaces/response'
 
 export const postAPI = createApi({
@@ -12,23 +12,24 @@ export const postAPI = createApi({
   baseQuery,
   tagTypes: ['Posts'],
   endpoints: (build) => ({
-    getPosts: build.query<I_Response<I_PostData>, void>({
-      query: () => ({
-        url: '/posts',
+    getPosts: build.query<I_Response<I_PostData>, string>({
+      query: (regexp) => ({
+        url: `/posts?regexp=${regexp}`,
       }),
       providesTags: ['Posts'],
     }),
-    getPost: build.query<I_Response<I_PostData>, string>({
+    getPost: build.query<I_Response<I_Post>, string | string[]>({
       query: (id) => ({
         url: `/posts/${id}`,
       }),
       providesTags: ['Posts'],
     }),
-    getPostVote: build.query<I_Response<I_PostVote>, { id: string; poll: string }>({
+    getPostVote: build.mutation<I_Response<I_PostVote>, { id: string; poll: string }>({
       query: ({ id, poll }) => ({
         url: `/posts/${id}/vote?positive=${poll}`,
+        method: 'PUT',
       }),
-      providesTags: ['Posts'],
+      invalidatesTags: ['Posts'],
     }),
   }),
 })

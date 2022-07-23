@@ -1,6 +1,7 @@
 import FavoriteIcon from '@mui/icons-material/Favorite'
+import FavoriteTwoToneIcon from '@mui/icons-material/FavoriteTwoTone'
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken'
-import { useEffect } from 'react'
+import HeartBrokenTwoToneIcon from '@mui/icons-material/HeartBrokenTwoTone'
 
 import * as S from './styles'
 
@@ -12,8 +13,8 @@ enum E_Poll {
   false = 'false',
 }
 
-export const Post = ({ posts }: { posts: I_Post[] }) => {
-  const [postVote] = postAPI.useLazyGetPostVoteQuery()
+export const Posts = ({ posts }: { posts: I_Post[] }) => {
+  const [postVote] = postAPI.useGetPostVoteMutation()
 
   const handleVote = (postId: string, pollDes: E_Poll) => () => {
     postVote({
@@ -21,10 +22,6 @@ export const Post = ({ posts }: { posts: I_Post[] }) => {
       poll: pollDes,
     })
   }
-
-  useEffect(() => {
-    console.log(posts)
-  }, [posts])
 
   return (
     <>
@@ -36,19 +33,19 @@ export const Post = ({ posts }: { posts: I_Post[] }) => {
             </S.Box>
             <S.ContentBox>
               <S.PostTitle>
-                <S.PostTitleLink to={`/post/${post._id}`}>{post.title}</S.PostTitleLink>
+                <S.PostTitleLink to={`/search/posts/${post._id}`}>{post.title}</S.PostTitleLink>
               </S.PostTitle>
               <S.PostSubtitle>
-                <S.PostLink to={`/post/${post._id}`}>{post.subtitle}</S.PostLink>
+                <S.PostLink to={`/search/posts/${post._id}`}>{post.subtitle}</S.PostLink>
               </S.PostSubtitle>
             </S.ContentBox>
             <S.VoteBox>
               <S.VoteButton onClick={handleVote(post._id, E_Poll.true)}>
-                <FavoriteIcon />
+                {post.vote === 1 ? <FavoriteIcon color='error' /> : <FavoriteTwoToneIcon />}
                 <S.VoteLabel>{post.upvotes}</S.VoteLabel>
               </S.VoteButton>
               <S.VoteButton onClick={handleVote(post._id, E_Poll.false)}>
-                <HeartBrokenIcon />
+                {post.vote === -1 ? <HeartBrokenIcon color='error' /> : <HeartBrokenTwoToneIcon />}
               </S.VoteButton>
             </S.VoteBox>
           </S.Post>

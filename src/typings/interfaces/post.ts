@@ -1,6 +1,6 @@
 type T_PostAuthor = {
   _id: string
-  alias: string
+  alias?: string
 }
 
 export interface I_PostPayload {
@@ -14,10 +14,13 @@ export interface I_CurrentPost {}
 export interface I_Post extends I_PostPayload {
   _id: string
   author: T_PostAuthor
-  tags: Array<string>
-  id: string
-  upvotes: number
-  downvotes: number
+  tags: string[]
+  public?: boolean
+  id?: string
+  upvotes: number | string[]
+  downvotes: number | string[]
+  __v?: number
+  vote: number
 }
 
 export interface I_PostData {

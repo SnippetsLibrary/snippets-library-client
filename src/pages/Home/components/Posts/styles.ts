@@ -13,7 +13,7 @@ export const Post = styled.div`
 
   background-color: #fff;
   border-radius: 12px;
-  outline: 1px solid #eaeaea;
+  outline: 1px solid #8888;
 `
 
 export const Box = styled.div``
@@ -30,11 +30,11 @@ export const PostTitle = styled.h2`
 
 export const PostSubtitle = styled.p`
   font-size: 18px;
-  color: rgb(98, 112, 112);
+  color: #fff;
 `
 
 export const PostLink = styled(Link)`
-  color: rgb(98, 112, 112);
+  color: #888787;
   text-decoration: none;
   text-transform: capitalize;
 `
