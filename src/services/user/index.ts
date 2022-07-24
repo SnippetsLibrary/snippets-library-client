@@ -1,6 +1,6 @@
 import { createApi } from '@reduxjs/toolkit/query/react'
 
-import { I_UserUpdate } from './interfaces'
+import { I_UserPhotoUpdate, I_UserUpdate } from './interfaces'
 
 import { baseQuery } from '../utils'
 
@@ -28,6 +28,14 @@ export const userAPI = createApi({
       query: (body) => ({
         url: '/users/update',
         method: 'PATCH',
+        body,
+      }),
+      invalidatesTags: ['Users'],
+    }),
+    updatePhoto: build.mutation<I_Response<I_UserPhotoUpdate>, { body: File; format: string }>({
+      query: ({ body, format }) => ({
+        url: `/users/photo?format=${format}`,
+        method: 'PUT',
         body,
       }),
       invalidatesTags: ['Users'],
