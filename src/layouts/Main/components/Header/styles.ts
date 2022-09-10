@@ -97,3 +97,12 @@ export const ProfileLabel = styled.span`
 
   box-shadow: none;
 `
+export const PlusButtonBox = styled.div`
+  margin: 0 3rem;
+  padding: 0.5rem 0.5rem 0.2rem;
+
+  color: #fff;
+
+  background-color: #555;
+  border-radius: 50%;
+`

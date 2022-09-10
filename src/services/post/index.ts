@@ -24,10 +24,21 @@ export const postAPI = createApi({
       }),
       providesTags: ['Posts'],
     }),
-    getPostVote: build.mutation<I_Response<I_PostVote>, { id: string; poll: string }>({
+    getPostVote: build.mutation<I_Response<I_Post>, { id: string; poll: string }>({
       query: ({ id, poll }) => ({
         url: `/posts/${id}/vote?positive=${poll}`,
         method: 'PUT',
+      }),
+      invalidatesTags: ['Posts'],
+    }),
+    createPost: build.mutation<
+      I_Response<I_PostVote>,
+      { title: string; subtitle: string; text: string }
+    >({
+      query: ({ title, subtitle, text }) => ({
+        url: `/posts/`,
+        method: 'POST',
+        body: { title, subtitle, text },
       }),
       invalidatesTags: ['Posts'],
     }),

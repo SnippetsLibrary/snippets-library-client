@@ -1,3 +1,4 @@
+import AddRoundedIcon from '@mui/icons-material/AddRounded'
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown'
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp'
 import { useState } from 'react'
@@ -59,6 +60,11 @@ export const MainHeader = () => {
         </S.UnorderedList>
       </S.HeaderInner>
       <MS.HeaderMore>
+        <S.NavLink to={ROUTES.createPost}>
+          <S.PlusButtonBox>
+            <AddRoundedIcon fontSize='large' />
+          </S.PlusButtonBox>
+        </S.NavLink>
         {menu && <MS.PopoverOverlay onClick={handleMenuClose} />}
         <MS.More onClick={handleMenuToggle}>
           {menu ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}

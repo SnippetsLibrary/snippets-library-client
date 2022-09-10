@@ -19,6 +19,7 @@ import {
   SignUp,
   Welcome,
 } from 'src/pages'
+import { CreatePost } from 'src/pages/CreatePost'
 import { ROUTES } from 'src/utils/constants/routes'
 
 export const Routing = () => {
@@ -96,6 +97,14 @@ export const Routing = () => {
           element={
             <MainLayout>
               <Post />
+            </MainLayout>
+          }
+        />
+        <Route
+          path={ROUTES.createPost}
+          element={
+            <MainLayout>
+              <CreatePost />
             </MainLayout>
           }
         />
