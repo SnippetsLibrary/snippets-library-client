@@ -1,6 +1,8 @@
 import ShareTwoToneIcon from '@mui/icons-material/ShareTwoTone'
 import { useState } from 'react'
 
+import { Navigate } from 'react-router-dom'
+
 import { E_PostHeaderButtonsData, postHeaderButtonsData } from './data'
 import * as S from './styles'
 import { animation } from './variants'
@@ -11,6 +13,7 @@ import { I_Post } from 'src/typings/interfaces/post'
 
 export const PostHeader = ({ post }: { post: I_Post }) => {
   const [menu, setMenu] = useState<boolean>(false)
+  const [edit, setEdit] = useState(false)
 
   const handleMenuToggle = () => {
     setMenu((prev) => !prev)
@@ -19,8 +22,6 @@ export const PostHeader = ({ post }: { post: I_Post }) => {
   const handleMenuClose = () => {
     setMenu(false)
   }
-
-  console.log(post)
 
   const PostHeaderButtons = {
     [E_PostHeaderButtonsData.copyUrl]: () => {
@@ -31,6 +32,8 @@ export const PostHeader = ({ post }: { post: I_Post }) => {
       handleMenuClose()
     },
   }
+
+  if (edit) return <Navigate to={`/posts/update/${post._id}`} />
 
   return (
     <S.PostHeader>
@@ -51,6 +54,7 @@ export const PostHeader = ({ post }: { post: I_Post }) => {
             })}
           </S.PostSharePopoverBox>
         </S.PostSharePopover>
+        <S.PostButton onClick={() => setEdit(true)}>EDIT</S.PostButton>
       </S.PostButtonGroup>
     </S.PostHeader>
   )

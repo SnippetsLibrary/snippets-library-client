@@ -43,11 +43,11 @@ export const postAPI = createApi({
       invalidatesTags: ['Posts'],
     }),
     updatePost: build.mutation<
-      I_Response<I_PostVote>,
+      I_Response<I_Post>,
       { id: string; title: string; subtitle: string; text: string }
     >({
       query: ({ id, title, subtitle, text }) => ({
-        url: `/posts/${id}`,
+        url: `/posts/update/${id}`,
         method: 'PATCH',
         body: { title, subtitle, text },
       }),

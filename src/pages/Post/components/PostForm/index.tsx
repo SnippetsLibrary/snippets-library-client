@@ -36,7 +36,7 @@ export const PostForm = ({
           <textarea defaultValue={initialData.text} {...register('text')} />
         </S.FormBlock>
         <S.ButtonBox>
-          <S.SubmitInput type='submit' value='Create' />
+          <S.SubmitInput type='submit' value='Submit' />
         </S.ButtonBox>
       </S.Form>
     </S.FormBox>

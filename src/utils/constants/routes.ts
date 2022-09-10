@@ -15,6 +15,7 @@ export enum ROUTES {
   userProfile = '/:userName',
   userProfileSettings = '/:userName/settings',
   post = 'search/posts/:postId',
+  updatePost = '/posts/update/:postId',
   createPost = '/new_post',
   community = '/community',
 

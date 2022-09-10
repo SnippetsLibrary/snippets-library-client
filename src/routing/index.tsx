@@ -20,6 +20,7 @@ import {
   Welcome,
 } from 'src/pages'
 import { CreatePost } from 'src/pages/CreatePost'
+import { UpdatePost } from 'src/pages/UpdatePost'
 import { ROUTES } from 'src/utils/constants/routes'
 
 export const Routing = () => {
@@ -97,6 +98,14 @@ export const Routing = () => {
           element={
             <MainLayout>
               <Post />
+            </MainLayout>
+          }
+        />
+        <Route
+          path={ROUTES.updatePost}
+          element={
+            <MainLayout>
+              <UpdatePost />
             </MainLayout>
           }
         />
