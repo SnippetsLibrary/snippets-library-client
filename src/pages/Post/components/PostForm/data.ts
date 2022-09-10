@@ -1,5 +1,5 @@
 export interface PostFormI {
-  header: string
-  subheader: string
+  title: string
+  subtitle: string
   text: string
 }

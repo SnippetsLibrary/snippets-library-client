@@ -23,14 +23,14 @@ export const PostForm = ({
       <S.Form onSubmit={handleSubmit(submit)}>
         <S.FormBlock>
           <input
-            {...register('header', { required: true })}
-            defaultValue={initialData.header}
+            {...register('title', { required: true })}
+            defaultValue={initialData.title}
             autoFocus
           />
-          {errors.header && <span>This field is required</span>}
+          {errors.title && <span>This field is required</span>}
         </S.FormBlock>
         <S.FormBlock>
-          <textarea defaultValue={initialData.subheader} {...register('subheader')} />
+          <textarea defaultValue={initialData.subtitle} {...register('subtitle')} />
         </S.FormBlock>
         <S.FormBlock>
           <textarea defaultValue={initialData.text} {...register('text')} />
