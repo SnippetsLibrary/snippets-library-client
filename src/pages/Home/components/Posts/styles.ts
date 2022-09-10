@@ -24,6 +24,10 @@ export const ContentBox = styled.div`
   gap: 12px;
 `
 
+export const ContentBoxLink = styled(Link)`
+  text-decoration: none;
+`
+
 export const PostTitle = styled.h2`
   font-size: 24px;
 `
