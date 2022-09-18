@@ -1,5 +1,5 @@
 import ShareTwoToneIcon from '@mui/icons-material/ShareTwoTone'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 import { Navigate } from 'react-router-dom'
 
@@ -7,13 +7,26 @@ import { E_PostHeaderButtonsData, postHeaderButtonsData } from './data'
 import * as S from './styles'
 import { animation } from './variants'
 
+import { useStoreSelector } from 'src/hooks/useStoreSelector'
 import * as MS from 'src/layouts/styles'
-import * as C from 'src/styles/components'
+import { postAPI } from 'src/services/post'
 import { I_Post } from 'src/typings/interfaces/post'
 
-export const PostHeader = ({ post }: { post: I_Post }) => {
+export const PostHeader = ({ post, onRedirect }: { post: I_Post; onRedirect: () => void }) => {
   const [menu, setMenu] = useState<boolean>(false)
   const [edit, setEdit] = useState(false)
+  const userId = useStoreSelector((state) => state.user.userId)
+  const [fetchPostDelete, result] = postAPI.useDeletePostMutation()
+
+  const onPostDelete = () => {
+    fetchPostDelete({ id: post._id })
+    onRedirect()
+  }
+
+  useEffect(() => {
+    if (result.data) console.log('redirect to main page')
+    if (result.error) console.log('ERROR: ', result.error)
+  }, [result])
 
   const handleMenuToggle = () => {
     setMenu((prev) => !prev)
@@ -32,6 +45,8 @@ export const PostHeader = ({ post }: { post: I_Post }) => {
       handleMenuClose()
     },
   }
+
+  const isAuthor = userId === post.author._id
 
   if (edit) return <Navigate to={`/posts/update/${post._id}`} />
 
@@ -54,7 +69,9 @@ export const PostHeader = ({ post }: { post: I_Post }) => {
             })}
           </S.PostSharePopoverBox>
         </S.PostSharePopover>
-        <S.PostButton onClick={() => setEdit(true)}>EDIT</S.PostButton>
+        {isAuthor && <S.PostButton onClick={() => setEdit(true)}>EDIT</S.PostButton>}
+        <hr />
+        {isAuthor && <S.PostButton onClick={onPostDelete}>Delete</S.PostButton>}
       </S.PostButtonGroup>
     </S.PostHeader>
   )

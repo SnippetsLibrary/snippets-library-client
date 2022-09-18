@@ -1,6 +1,6 @@
 import { LinearProgress } from '@mui/material'
-import { useLayoutEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
+import { Navigate, useParams } from 'react-router-dom'
 
 import { PostContent } from './components/PostContent'
 import { PostHeader } from './components/PostHeader'
@@ -14,15 +14,22 @@ export const Post = () => {
 
   const params = useParams()
 
+  const [redirect, setRedirect] = useState(false) // to prevent useGerPostQuery from triggering
+  const onRedirect = () => {
+    setRedirect(true)
+  }
+
   const {
     data: getPostData,
     isSuccess: getPostDataSuccess,
     isLoading: getPostDataLoading,
-  } = postAPI.useGetPostQuery(params.postId!)
+  } = postAPI.useGetPostQuery(params.postId!, { skip: redirect })
 
   useLayoutEffect(() => {
     if (getPostData) setPost(getPostData.payload)
   }, [getPostData])
+
+  if (redirect) return <Navigate to={`/search/posts/`} />
 
   if (getPostDataLoading)
     return (
@@ -35,7 +42,7 @@ export const Post = () => {
     return (
       <S.PostBox>
         <S.Inner>
-          <PostHeader post={post} />
+          <PostHeader post={post} onRedirect={onRedirect} />
           <PostContent post={post} />
         </S.Inner>
       </S.PostBox>
