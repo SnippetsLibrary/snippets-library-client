@@ -32,10 +32,6 @@ export const PasswordForm = () => {
     })
   }
 
-  useEffect(() => {
-    if (userUpdateSuccess) alert('Password updated successfully')
-  }, [userUpdateSuccess])
-
   return (
     <S.Form autoComplete='off' onSubmit={handleSubmit(handleUpdateProfile)}>
       <S.InputBox>
@@ -64,6 +60,7 @@ export const PasswordForm = () => {
       </S.InputBox>
       <S.UserButtonsInner>
         <S.UserUpdateButton type='submit'>Change Password</S.UserUpdateButton>
+        {userUpdateSuccess && <b style={{ color: '#fff' }}>Password Successfully Changed</b>}
       </S.UserButtonsInner>
     </S.Form>
   )
