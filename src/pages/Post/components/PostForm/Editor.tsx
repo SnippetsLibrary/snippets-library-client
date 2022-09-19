@@ -13,7 +13,10 @@ export const Editor = ({
   return (
     <div className='container'>
       {preview ? (
-        <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} />
+        <MDEditor.Markdown
+          source={value}
+          style={{ whiteSpace: 'pre-wrap', backgroundColor: 'transparent' }}
+        />
       ) : (
         <MDEditor
           defaultTabEnable={true}
