@@ -2,6 +2,8 @@ import { motion } from 'framer-motion'
 import styled from 'styled-components'
 
 export const PostHeader = styled.div`
+  position: relative;
+
   display: flex;
   flex-direction: column;
   gap: 18px;
@@ -21,11 +23,16 @@ export const PostTitle = styled.h1`
 export const PostButtonGroup = styled.div`
   position: relative;
 
-  width: fit-content;
+  display: flex;
+  justify-content: space-between;
+
+  width: 100%;
 `
 
 export const PostButton = styled.button`
   cursor: pointer;
+
+  margin: 0 1rem;
 
   background-color: transparent;
   border: 0;
@@ -82,4 +89,25 @@ export const PostShareLink = styled.a`
   &:hover {
     background-color: #494949;
   }
+`
+export const ConfirmBox = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center 1px;
+
+  padding: 1rem;
+
+  color: white;
+  text-align: center;
+`
+
+export const ConfirmBtn = styled.button`
+  margin-top: 1rem;
+  padding: 1rem;
+
+  color: #fff;
+
+  background-color: transparent;
+  border: 1px solid #ddd;
+  border-radius: 0.5rem;
 `

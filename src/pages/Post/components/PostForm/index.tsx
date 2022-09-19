@@ -1,6 +1,7 @@
 import { useForm } from 'react-hook-form'
 
 import { PostFormI } from './data'
+import { Editor } from './Editor'
 
 import * as S from './styles'
 
@@ -35,6 +36,7 @@ export const PostForm = ({
         <S.FormBlock>
           <textarea defaultValue={initialData.text} {...register('text')} />
         </S.FormBlock>
+        <Editor />
         <S.ButtonBox>
           <S.SubmitInput type='submit' value='Submit' />
         </S.ButtonBox>

@@ -1,3 +1,5 @@
+import DeleteOutlineRoundedIcon from '@mui/icons-material/DeleteOutlineRounded'
+import EditRoundedIcon from '@mui/icons-material/EditRounded'
 import ShareTwoToneIcon from '@mui/icons-material/ShareTwoTone'
 import { useEffect, useState } from 'react'
 
@@ -14,6 +16,7 @@ import { I_Post } from 'src/typings/interfaces/post'
 
 export const PostHeader = ({ post, onRedirect }: { post: I_Post; onRedirect: () => void }) => {
   const [menu, setMenu] = useState<boolean>(false)
+  const [del_menu, setDelMenu] = useState<boolean>(false)
   const [edit, setEdit] = useState(false)
   const userId = useStoreSelector((state) => state.user.userId)
   const [fetchPostDelete, result] = postAPI.useDeletePostMutation()
@@ -34,6 +37,14 @@ export const PostHeader = ({ post, onRedirect }: { post: I_Post; onRedirect: () 
 
   const handleMenuClose = () => {
     setMenu(false)
+  }
+
+  const handleDelMenuToggle = () => {
+    setDelMenu((prev) => !prev)
+  }
+
+  const handleDelMenuClose = () => {
+    setDelMenu(false)
   }
 
   const PostHeaderButtons = {
@@ -69,9 +80,29 @@ export const PostHeader = ({ post, onRedirect }: { post: I_Post; onRedirect: () 
             })}
           </S.PostSharePopoverBox>
         </S.PostSharePopover>
-        {isAuthor && <S.PostButton onClick={() => setEdit(true)}>EDIT</S.PostButton>}
-        <hr />
-        {isAuthor && <S.PostButton onClick={onPostDelete}>Delete</S.PostButton>}
+        {isAuthor && (
+          <div>
+            <S.PostButton onClick={() => setEdit(true)}>
+              <EditRoundedIcon />
+            </S.PostButton>{' '}
+            <S.PostButton onClick={handleDelMenuToggle}>
+              <DeleteOutlineRoundedIcon />
+            </S.PostButton>
+            {del_menu && <MS.PopoverOverlay onClick={handleDelMenuClose} />}
+            <S.PostSharePopover
+              style={{ left: '90%' }}
+              animate={del_menu ? animation.open : animation.closed}
+              variants={animation}
+            >
+              <S.PostSharePopoverBox>
+                <S.ConfirmBox>
+                  <h3>Delete?</h3>
+                  <S.ConfirmBtn onClick={onPostDelete}>CONFIRM</S.ConfirmBtn>
+                </S.ConfirmBox>
+              </S.PostSharePopoverBox>
+            </S.PostSharePopover>
+          </div>
+        )}
       </S.PostButtonGroup>
     </S.PostHeader>
   )
