@@ -1,12 +1,22 @@
 import MDEditor from '@uiw/react-md-editor'
-import React, { useState } from 'react'
 
-export const Editor = () => {
-  const [value, setValue] = useState('**Hello world!**')
+export const Editor = ({
+  value,
+  onChange,
+  preview,
+}: {
+  value: string
+  onChange: (str: string) => void
+  preview?: boolean
+}) => {
+  // const [value, setValue] = useState('**Hello world!**')
   return (
     <div className='container'>
-      <MDEditor value={value} onChange={(v) => setValue(v as string)} />
-      <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} />
+      {preview ? (
+        <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} />
+      ) : (
+        <MDEditor value={value} onChange={(v) => onChange(v as string)} />
+      )}
     </div>
   )
 }

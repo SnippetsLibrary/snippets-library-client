@@ -18,23 +18,33 @@ export const FormBlock = styled.div`
   max-width: 968px;
   height: 100%;
   margin: 0 auto;
-  padding: 48px;
+  padding: 1rem;
 `
 
 export const ButtonBox = styled.div`
   display: flex;
   justify-content: right;
-
-  margin-right: 5rem;
 `
 
 export const SubmitInput = styled.input`
+  margin-top: 2rem;
   padding: 1rem;
 
   font-size: 2rem;
   color: #fff;
 
-  background-color: #444;
+  background-color: transparent;
   border: 1px solid #999;
-  border-radius: 35px;
+  border-radius: 30px;
+`
+
+export const Input = styled.input`
+  padding: 1rem;
+
+  font-size: 1.2rem;
+  color: #eee;
+
+  background-color: #222;
+  border: 1px solid #ddd;
+  border-radius: 1rem;
 `

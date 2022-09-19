@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { PostFormI } from './data'
@@ -17,13 +18,16 @@ export const PostForm = ({
     handleSubmit,
     formState: { errors },
   } = useForm<PostFormI>()
-  const submit = (data: PostFormI) => onSubmit(data)
+  const submit = (data: PostFormI) => onSubmit({ ...data, text: text })
+
+  const [text, setText] = useState<string>(initialData.text)
 
   return (
     <S.FormBox>
       <S.Form onSubmit={handleSubmit(submit)}>
         <S.FormBlock>
-          <input
+          <label>Title</label>
+          <S.Input
             {...register('title', { required: true })}
             defaultValue={initialData.title}
             autoFocus
@@ -31,15 +35,17 @@ export const PostForm = ({
           {errors.title && <span>This field is required</span>}
         </S.FormBlock>
         <S.FormBlock>
-          <textarea defaultValue={initialData.subtitle} {...register('subtitle')} />
+          <label>Subtitle</label>
+          <S.Input defaultValue={initialData.subtitle} {...register('subtitle')} />
         </S.FormBlock>
         <S.FormBlock>
-          <textarea defaultValue={initialData.text} {...register('text')} />
+          <Editor value={text} onChange={(value) => setText(value)} />
         </S.FormBlock>
-        <Editor />
-        <S.ButtonBox>
-          <S.SubmitInput type='submit' value='Submit' />
-        </S.ButtonBox>
+        <S.FormBlock>
+          <S.ButtonBox>
+            <S.SubmitInput type='submit' value='Submit' />
+          </S.ButtonBox>
+        </S.FormBlock>
       </S.Form>
     </S.FormBox>
   )
