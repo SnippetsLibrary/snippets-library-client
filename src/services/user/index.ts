@@ -32,6 +32,14 @@ export const userAPI = createApi({
       }),
       invalidatesTags: ['Users'],
     }),
+    changePassword: build.mutation<I_Response<I_User>, { password: string; newPassword: string }>({
+      query: (body) => ({
+        url: '/users/change_password',
+        method: 'PATCH',
+        body,
+      }),
+      invalidatesTags: ['Users'],
+    }),
     updatePhoto: build.mutation<I_Response<I_UserPhotoUpdate>, { body: File; format: string }>({
       query: ({ body, format }) => ({
         url: `/users/photo?format=${format}`,

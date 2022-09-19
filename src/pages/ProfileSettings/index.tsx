@@ -1,6 +1,7 @@
 import { LinearProgress } from '@mui/material'
 import { useParams } from 'react-router-dom'
 
+import { PasswordForm } from './components/PasswordForm'
 import { ProfileForm } from './components/ProfileForm'
 import { ProfilePhoto } from './components/ProfilePhoto'
 import * as S from './styles'
@@ -37,6 +38,17 @@ export const ProfileSettings = () => {
               </S.SettingsBox>
               <S.SettingsBox>
                 <ProfilePhoto userData={userData} />
+              </S.SettingsBox>
+            </S.SettingsInner>
+          </S.InnerBox>
+        </S.Inner>
+        <S.Inner>
+          <S.InnerBox>
+            <S.Label>Security Settings</S.Label>
+            <C.Divider />
+            <S.SettingsInner>
+              <S.SettingsBox>
+                <PasswordForm />
               </S.SettingsBox>
             </S.SettingsInner>
           </S.InnerBox>
