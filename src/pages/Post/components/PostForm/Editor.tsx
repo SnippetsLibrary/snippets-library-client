@@ -15,7 +15,16 @@ export const Editor = ({
       {preview ? (
         <MDEditor.Markdown source={value} style={{ whiteSpace: 'pre-wrap' }} />
       ) : (
-        <MDEditor value={value} onChange={(v) => onChange(v as string)} />
+        <MDEditor
+          defaultTabEnable={true}
+          onFocus={() => {
+            ;(
+              document.getElementsByClassName('w-md-editor-text-input').item(0) as HTMLElement
+            )?.focus()
+          }}
+          value={value}
+          onChange={(v) => onChange(v as string)}
+        />
       )}
     </div>
   )
