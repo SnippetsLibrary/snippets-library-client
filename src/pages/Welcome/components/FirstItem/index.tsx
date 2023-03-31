@@ -25,9 +25,10 @@ export const FirstItem = () => {
       <S.ContentImages variants={thumbnailVariants}>
         <motion.div whileHover='hover' variants={frameVariants}>
           <motion.img
-            src={`https://static1.squarespace.com/static/5b475b2c50a54f54f9b4e1dc/t/5b5a3938562fa764113169a6/1532639559620/DSCF3338.jpg?format=960w`}
+            src={`https://w.wallhaven.cc/full/kx/wallhaven-kx98xd.jpg`}
             alt='Test Photo'
             variants={imageVariants}
+            width={'100%'}
           />
         </motion.div>
       </S.ContentImages>

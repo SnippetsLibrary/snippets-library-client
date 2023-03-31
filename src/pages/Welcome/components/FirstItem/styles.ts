@@ -10,7 +10,7 @@ export const Content = styled(motion.div)`
 
   max-width: 1440px;
   height: min-content;
-  padding: 120px 0px 150px;
+  padding: 20px 0px 50px;
 
   font-size: 80px;
   font-weight: 700;
